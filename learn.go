@@ -22,7 +22,7 @@ func main() {
 	checkXm := regexp.MustCompile(".*羡.*慕.*")
 	for update := range updates {
 
-		if update.Message.ReplyToMessage != nil {
+		if update.Message != nil && update.Message.ReplyToMessage != nil {
 
 			if (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm")) && update.Message.ReplyToMessage.From.ID == 5568996608 {
 				msgID := update.Message.MessageID
