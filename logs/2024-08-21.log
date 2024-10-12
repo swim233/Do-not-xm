@@ -1,0 +1,16 @@
+2024/08/21 00:35:16 learn.go:11: [ERROR] qwq
+2024/08/21 00:39:07 learn.go:12: [ERROR] qwq
+2024/08/21 00:39:16 learn.go:12: [ERROR] qwq
+2024/08/21 00:39:16 learn.go:13: [INFO] pwp
+2024/08/21 00:44:27 learn.go:13: [ERROR] qwq
+2024/08/21 00:44:27 learn.go:14: [INFO] pwp
+2024/08/21 00:44:27 learn.go:15: [WARN] awa
+2024/08/21 10:01:56 learn.go:13: [ERROR] qwq
+2024/08/21 10:01:56 learn.go:14: [INFO] pwp
+2024/08/21 10:01:56 learn.go:15: [WARN] awa
+2024/08/21 10:02:04 learn.go:13: [ERROR] qwq
+2024/08/21 10:02:04 learn.go:14: [INFO] pwp
+2024/08/21 10:02:04 learn.go:15: [WARN] awa
+2024/08/21 10:02:26 learn.go:12: [ERROR] qwq
+2024/08/21 10:02:26 learn.go:13: [INFO] pwp
+2024/08/21 10:02:26 learn.go:14: [WARN] awa
