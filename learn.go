@@ -8,6 +8,8 @@ import (
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )
 
+var CheckFlag = 0
+
 func main() {
 	// 创建Bot实例
 	Bot, err := tgbotapi.NewBotAPI("YOUR_BOT_TOKEN")
@@ -21,10 +23,12 @@ func main() {
 	updates := Bot.GetUpdatesChan(updatecfg)
 	checkXm := regexp.MustCompile(".*羡.*慕.*")
 	for update := range updates {
+		if update.Message != nil {
 
-		if update.Message != nil && update.Message.ReplyToMessage != nil {
-
-			if (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm")) && update.Message.ReplyToMessage.From.ID == 5568996608 {
+			if update.Message.From.ID == 5568996608 {
+				CheckFlag = update.Message.MessageID
+			}
+			if ((update.Message.MessageID == (CheckFlag + 1)) && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) || (update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608 && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) {
 				msgID := update.Message.MessageID
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 				msg.ReplyToMessageID = msgID
