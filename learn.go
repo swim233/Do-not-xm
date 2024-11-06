@@ -28,7 +28,7 @@ func main() {
 			if update.Message.From.ID == 5568996608 {
 				CheckFlag = update.Message.MessageID
 			}
-			if ((update.Message.MessageID == (CheckFlag + 1)) && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) || (update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608 && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) {
+			if ((update.Message.MessageID == (CheckFlag + 1)) && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608 && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm")))) {
 				msgID := update.Message.MessageID
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 				msg.ReplyToMessageID = msgID
