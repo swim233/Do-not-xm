@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"learn/goUnits/logger"
 	"log"
 	"os"
 	"regexp"
@@ -26,7 +26,9 @@ var BotConifg Config
 func main() {
 	// 创建Bot实例
 	err := godotenv.Load()
-	fmt.Printf("Error:%s", err)
+	if err != nil {
+		logger.Error("Error:%s", err)
+	}
 	BotConifg.Token = os.Getenv("Token")
 	Bot, err := tgbotapi.NewBotAPI(BotConifg.Token)
 	if err != nil {
