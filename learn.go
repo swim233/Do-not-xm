@@ -1,18 +1,34 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strings"
+	"time"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
+	godotenv "github.com/joho/godotenv"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 var CheckFlag = 0
+var Sleep = 0
+var CheckXm = regexp.MustCompile(".*羡.*慕.*")
+
+type Config struct {
+	Token string
+}
+
+var BotConifg Config
 
 func main() {
 	// 创建Bot实例
-	Bot, err := tgbotapi.NewBotAPI("YOUR_BOT_TOKEN")
+	err := godotenv.Load()
+	fmt.Printf("Error:%s", err)
+	BotConifg.Token = os.Getenv("Token")
+	Bot, err := tgbotapi.NewBotAPI(BotConifg.Token)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -21,19 +37,32 @@ func main() {
 	updatecfg := tgbotapi.NewUpdate(0)
 	updatecfg.Timeout = 60
 	updates := Bot.GetUpdatesChan(updatecfg)
-	checkXm := regexp.MustCompile(".*羡.*慕.*")
+
 	for update := range updates {
 		if update.Message != nil {
 
 			if update.Message.From.ID == 5568996608 {
 				CheckFlag = update.Message.MessageID
 			}
-			if ((update.Message.MessageID == (CheckFlag + 1)) && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm"))) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608 && (checkXm.MatchString(update.Message.Text) || strings.Contains(update.Message.Text, "xm")))) {
-				msgID := update.Message.MessageID
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
-				msg.ReplyToMessageID = msgID
-				Bot.Send(msg)
+			if Sleep == 0 {
+				if ((update.Message.MessageID == (CheckFlag + 1)) && IsXm(update.Message.Text)) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608 && IsXm(update.Message.Text))) {
+					msgID := update.Message.MessageID
+					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
+					msg.ReplyToMessageID = msgID
+					Bot.Send(msg)
+					Sleep = 5
+				} else {
+					time.Sleep(1 * time.Second)
+					Sleep--
+				}
 			}
 		}
 	}
+
+}
+func IsXm(update string) bool {
+	if CheckXm.MatchString(update) || strings.Contains(update, "xm") {
+		return true
+	}
+	return false
 }
