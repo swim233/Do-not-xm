@@ -3,6 +3,7 @@ package main
 import (
 	"learn/goUnits/logger"
 	"log"
+	"math/rand/v2"
 	"os"
 	"regexp"
 	"strings"
@@ -52,7 +53,7 @@ func main() {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 					msg.ReplyToMessageID = msgID
 					Bot.Send(msg)
-					Sleep = 5
+					Sleep = (rand.IntN(10) + 10)
 				} else {
 					time.Sleep(1 * time.Second)
 					Sleep--
