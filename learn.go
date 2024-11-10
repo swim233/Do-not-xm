@@ -76,7 +76,7 @@ UserID=
 				CheckFlag = update.Message.MessageID
 			}
 			if Sleep <= 0 {
-				if ((update.Message.MessageID == (CheckFlag + 1)) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == 5568996608))) && IsXm(update.Message.Text) {
+				if ((update.Message.MessageID == (CheckFlag + 1)) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == BotConifg.intUserID))) && IsXm(update.Message.Text) {
 					msgID := update.Message.MessageID
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 					msg.ReplyToMessageID = msgID
