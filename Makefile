@@ -8,7 +8,7 @@ build:
 	GOARCH=$(ARCH) GOOS=$(OS) go build -o $(FILENAME)-$(ARCH)-linux-$(VERSION) $(FILE)
 	@echo "文件$(FILENAME)-$(ARCH)-linux-$(VERSION) 编译完成"
 run: 
-	go run ./learn.go
+	go run ./*.go
 build_all:
 	@echo "正在编译全平台的文件"
 	GOARCH=amd64 GOOS=linux go build -o $(FILENAME)-amd64-linux-$(VERSION) $(FILE)

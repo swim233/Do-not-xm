@@ -17,6 +17,8 @@ import (
 var CheckFlag = 0
 var Sleep = 0
 var CheckXm = regexp.MustCompile(".*羡.*慕.*")
+var Mode = "match"
+var Bot *tgbotapi.BotAPI
 
 type Config struct {
 	Token     string
@@ -27,7 +29,6 @@ type Config struct {
 var BotConifg Config
 
 func main() {
-	// 创建Bot实例
 
 	if _, err := os.Stat(".env"); os.IsNotExist(err) {
 		// 如果 .env 文件不存在，创建并写入默认值
@@ -51,17 +52,23 @@ UserID=
 	}
 	err := godotenv.Load()
 	if err != nil {
-		log.Panic(err)
+		logger.Error("%s", err)
 	}
 	BotConifg.Token = os.Getenv("Token")
 	BotConifg.UserID = os.Getenv("UserID")
 	BotConifg.intUserID, err = strconv.ParseInt(BotConifg.UserID, 10, 64)
 	if err != nil {
-		log.Panic(err)
+		logger.Error("%s", err)
 	}
-	Bot, err := tgbotapi.NewBotAPI(BotConifg.Token)
+
 	if err != nil {
-		log.Panic(err)
+		logger.Error("%s", err)
+	}
+	qwq, err := tgbotapi.NewBotAPI(BotConifg.Token)
+	Bot = qwq
+	if err != nil {
+		logger.Debug("%s", BotConifg.Token)
+		logger.Error("%s", err)
 	}
 
 	Bot.Debug = true
@@ -70,7 +77,9 @@ UserID=
 	updates := Bot.GetUpdatesChan(updatecfg)
 
 	for update := range updates {
-		if update.Message != nil {
+		b := Bot.AddHandle()
+		b.NewCommandProcessor("switchmode", switchmodeHandle)
+		if update.Message != nil && Mode == "match" {
 
 			if update.Message.From.ID == BotConifg.intUserID {
 				CheckFlag = update.Message.MessageID
@@ -88,6 +97,15 @@ UserID=
 				}
 			}
 		}
+		if update.Message != nil && Mode == "any" {
+			if IsXm(update.Message.Text) {
+				msgID := update.Message.MessageID
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
+				msg.ReplyToMessageID = msgID
+				Bot.Send(msg)
+			}
+
+		}
 	}
 
 }
@@ -96,4 +114,17 @@ func IsXm(update string) bool {
 		return true
 	}
 	return false
+}
+func switchmodeHandle(update tgbotapi.Update) error {
+	logger.Debug("123")
+	if Mode == "match" {
+		Mode = "any"
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
+		Bot.Send(msg)
+	} else {
+		Mode = "match"
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：匹配模式")
+		Bot.Send(msg)
+	}
+	return nil
 }
