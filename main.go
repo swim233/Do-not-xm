@@ -1,13 +1,17 @@
 package main
 
 import (
+	"learn/goUnits/logger"
 	"log"
 	"math/rand/v2"
+	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
+	godotenv "github.com/joho/godotenv"
 )
 
 var CheckFlag = 0
@@ -25,14 +29,45 @@ type Config struct {
 var BotConifg Config
 
 func main() {
-	BotConifg.Token = ""
-	BotConifg.intUserID = 123
+	logger.SetLogLevel(1)
+	if _, err := os.Stat(".env"); os.IsNotExist(err) {
+		// 如果 .env 文件不存在，创建并写入默认值
+		logger.Info(".env 文件不存在，正在创建...")
+
+		// 创建并打开 .env 文件
+		file, err := os.Create(".env")
+		if err != nil {
+			log.Fatalf("创建 .env 文件失败: %v", err)
+		}
+		defer file.Close()
+
+		// 写入默认的环境变量内容
+		defaultEnv := `Toekn=
+UserID=
+`
+		if _, err := file.WriteString(defaultEnv); err != nil {
+			log.Fatalf("写入 .env 文件失败: %v", err)
+		}
+		logger.Info(".env 文件已创建，并写入默认内容.")
+	}
+	err := godotenv.Load()
+	if err != nil {
+		logger.Error("%s", err)
+	}
+
+	BotConifg.Token = os.Getenv("Token")
+	BotConifg.UserID = os.Getenv("UserID")
+	BotConifg.intUserID, err = strconv.ParseInt(BotConifg.UserID, 10, 64)
 	qwq, err := tgbotapi.NewBotAPI(BotConifg.Token)
 	Bot = qwq
 	if err != nil {
 		log.Printf("%s", BotConifg.Token)
 		log.Printf("%s", err)
 	}
+	if err != nil {
+		logger.Error("%s", err)
+	}
+	Bot.Debug = true
 	b := Bot.AddHandle()
 	b.NewCommandProcessor("switchmode", switchmodeHandle)
 	b.NewProcessor(func(update tgbotapi.Update) bool {
