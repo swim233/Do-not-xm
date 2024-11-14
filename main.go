@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "encoding/json"
 	"learn/goUnits/logger"
 	"log"
 	"math/rand/v2"
@@ -20,6 +21,9 @@ var CheckXm = regexp.MustCompile(".*羡.*慕.*")
 var Mode = "match"
 var Bot *tgbotapi.BotAPI
 
+type Data struct {
+	ChatID int
+}
 type Config struct {
 	Token     string
 	UserID    string
@@ -58,6 +62,9 @@ UserID=
 	BotConifg.Token = os.Getenv("Token")
 	BotConifg.UserID = os.Getenv("UserID")
 	BotConifg.intUserID, err = strconv.ParseInt(BotConifg.UserID, 10, 64)
+	if err != nil {
+		logger.Error("%s", err)
+	}
 	qwq, err := tgbotapi.NewBotAPI(BotConifg.Token)
 	Bot = qwq
 	if err != nil {
@@ -83,8 +90,13 @@ UserID=
 				Sleep--
 			}
 		}
-		if update.Message != nil && Mode == "any" && IsXm(update.Message.Text) {
+		if update.Message != nil && Mode == "any" && IsXm(update.Message.Text) && (update.Message.From.ID != BotConifg.intUserID) && Sleep <= 0 {
+			Sleep = (rand.IntN(10) + 10)
 			return true
+		} else {
+			time.Sleep(1 * time.Second)
+			Sleep--
+
 		}
 		return false
 	}, sendXm)
@@ -107,14 +119,20 @@ func sendXm(update tgbotapi.Update) error {
 }
 
 func switchmodeHandle(update tgbotapi.Update) error {
-	if Mode == "match" {
-		Mode = "any"
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
-		Bot.Send(msg)
+	if update.Message.From.ID == 5568996608 {
+		if Mode == "match" {
+			Mode = "any"
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
+			Bot.Send(msg)
+		} else {
+			Mode = "match"
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：匹配模式")
+			Bot.Send(msg)
+		}
 	} else {
-		Mode = "match"
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：匹配模式")
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")
 		Bot.Send(msg)
 	}
+
 	return nil
 }
