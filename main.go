@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "encoding/json"
+	"fmt"
 	"learn/goUnits/logger"
 	"log"
 	"math/rand/v2"
@@ -28,6 +29,8 @@ type Config struct {
 	Token     string
 	UserID    string
 	intUserID int64
+	randomCD  int
+	staticCD  int
 }
 
 var BotConifg Config
@@ -76,14 +79,15 @@ UserID=
 	}
 	Bot.Debug = true
 	b := Bot.AddHandle()
-	b.NewCommandProcessor("switchmode", switchmodeHandle)
+	b.NewCommandProcessor("switchmode", switchmodeHandler)
+	b.NewCommandProcessor("changecd", changecdHandler)
 	b.NewProcessor(func(update tgbotapi.Update) bool {
 		if update.Message != nil && Mode == "match" && Sleep <= 0 {
 			if update.Message.From.ID == BotConifg.intUserID {
 				CheckFlag = update.Message.MessageID
 			}
 			if ((update.Message.MessageID == (CheckFlag + 1)) || ((update.Message.ReplyToMessage != nil) && (update.Message.ReplyToMessage.From.ID == BotConifg.intUserID))) && IsXm(update.Message.Text) {
-				Sleep = (rand.IntN(10) + 10)
+				Sleep = (rand.IntN(BotConifg.randomCD) + BotConifg.staticCD)
 				return true
 			} else {
 				time.Sleep(1 * time.Second)
@@ -91,7 +95,7 @@ UserID=
 			}
 		}
 		if update.Message != nil && Mode == "any" && IsXm(update.Message.Text) && (update.Message.From.ID != BotConifg.intUserID) && Sleep <= 0 {
-			Sleep = (rand.IntN(10) + 10)
+			Sleep = (rand.IntN(BotConifg.randomCD) + BotConifg.staticCD)
 			return true
 		} else {
 			time.Sleep(1 * time.Second)
@@ -118,8 +122,8 @@ func sendXm(update tgbotapi.Update) error {
 	return nil
 }
 
-func switchmodeHandle(update tgbotapi.Update) error {
-	if update.Message.From.ID == 5568996608 {
+func switchmodeHandler(update tgbotapi.Update) error {
+	if update.Message.From.ID == BotConifg.intUserID {
 		if Mode == "match" {
 			Mode = "any"
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
@@ -136,3 +140,45 @@ func switchmodeHandle(update tgbotapi.Update) error {
 
 	return nil
 }
+func changecdHandler(update tgbotapi.Update) error {
+	if update.Message.From.ID == BotConifg.intUserID {
+		args := strings.Split(update.Message.CommandArguments(), " ")
+		if len(args) != 2 {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
+			Bot.Send(msg)
+			return fmt.Errorf("参数异常")
+		}
+		//获取群组和用户id
+		staticCDstr := args[0]
+		randomCDstr := args[1]
+		staticCD, err := strconv.ParseInt(staticCDstr, 10, 64)
+		if err != nil {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
+			Bot.Send(msg)
+			return fmt.Errorf("格式有误")
+		}
+		BotConifg.staticCD = int(staticCD)
+
+		randomCD, err := strconv.ParseInt(randomCDstr, 10, 64)
+		if err != nil {
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
+			Bot.Send(msg)
+			return fmt.Errorf("格式有误")
+
+		}
+		BotConifg.randomCD = int(randomCD)
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", staticCD, randomCD))
+		Bot.Send(msg)
+		return nil
+	} else {
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")
+		Bot.Send(msg)
+		return nil
+	}
+}
+
+//TODO
+//添加指令修改休眠时间
+//拆分文件
+//添加独立的群组模式
+//羡慕次数统计
