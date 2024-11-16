@@ -31,6 +31,7 @@ type Config struct {
 	intUserID int64
 	randomCD  int
 	staticCD  int
+	debugFlag bool
 }
 
 var BotConifg Config
@@ -81,6 +82,7 @@ UserID=
 	b := Bot.AddHandle()
 	b.NewCommandProcessor("switchmode", switchmodeHandler)
 	b.NewCommandProcessor("changecd", changecdHandler)
+	b.NewCommandProcessor("debug", debugHandler)
 	b.NewProcessor(func(update tgbotapi.Update) bool {
 		if update.Message != nil && Mode == "match" && Sleep <= 0 {
 			if update.Message.From.ID == BotConifg.intUserID {
@@ -123,7 +125,7 @@ func sendXm(update tgbotapi.Update) error {
 }
 
 func switchmodeHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID == BotConifg.intUserID {
+	if update.Message.From.ID == BotConifg.intUserID || BotConifg.debugFlag {
 		if Mode == "match" {
 			Mode = "any"
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
@@ -141,7 +143,7 @@ func switchmodeHandler(update tgbotapi.Update) error {
 	return nil
 }
 func changecdHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID == BotConifg.intUserID {
+	if update.Message.From.ID == BotConifg.intUserID || BotConifg.debugFlag {
 		args := strings.Split(update.Message.CommandArguments(), " ")
 		if len(args) != 2 {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
@@ -169,12 +171,22 @@ func changecdHandler(update tgbotapi.Update) error {
 		BotConifg.randomCD = int(randomCD)
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", staticCD, randomCD))
 		Bot.Send(msg)
+		Sleep = 0
 		return nil
 	} else {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")
 		Bot.Send(msg)
 		return nil
 	}
+}
+func debugHandler(update tgbotapi.Update) error {
+	if update.Message.From.ID == BotConifg.intUserID {
+		BotConifg.debugFlag = !BotConifg.debugFlag
+		fmtmsg := fmt.Sprintf("Debug模式当前为:%t", BotConifg.debugFlag)
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmtmsg)
+		Bot.Send(msg)
+	}
+	return nil
 }
 
 //TODO
