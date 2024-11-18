@@ -16,11 +16,13 @@ import (
 	godotenv "github.com/joho/godotenv"
 )
 
-var CheckFlag = 0
-var Sleep = 0
-var CheckXm = regexp.MustCompile(".*羡.*慕.*")
-var Mode = "match"
-var Bot *tgbotapi.BotAPI
+var (
+	CheckFlag = 0
+	Sleep     = 0
+	CheckXm   = regexp.MustCompile(".*羡.*慕.*")
+	Mode      = "match"
+	Bot       *tgbotapi.BotAPI
+)
 
 type Data struct {
 	ChatID int
@@ -50,7 +52,7 @@ func main() {
 		defer file.Close()
 
 		// 写入默认的环境变量内容
-		defaultEnv := `Toekn=
+		defaultEnv := `Token=
 UserID=
 `
 		if _, err := file.WriteString(defaultEnv); err != nil {
@@ -107,8 +109,8 @@ UserID=
 		return false
 	}, sendXm)
 	b.Run()
-
 }
+
 func IsXm(update string) bool {
 	if CheckXm.MatchString(update) || strings.Contains(update, "xm") {
 		return true
@@ -128,11 +130,11 @@ func switchmodeHandler(update tgbotapi.Update) error {
 	if update.Message.From.ID == BotConifg.intUserID || BotConifg.debugFlag {
 		if Mode == "match" {
 			Mode = "any"
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：全局匹配")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为: 全局匹配")
 			Bot.Send(msg)
 		} else {
 			Mode = "match"
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为：匹配模式")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为: 匹配模式")
 			Bot.Send(msg)
 		}
 	} else {
@@ -142,55 +144,60 @@ func switchmodeHandler(update tgbotapi.Update) error {
 
 	return nil
 }
+
 func changecdHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID == BotConifg.intUserID || BotConifg.debugFlag {
-		args := strings.Split(update.Message.CommandArguments(), " ")
-		if len(args) != 2 {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
-			Bot.Send(msg)
-			return fmt.Errorf("参数异常")
-		}
-		//获取群组和用户id
-		staticCDstr := args[0]
-		randomCDstr := args[1]
-		staticCD, err := strconv.ParseInt(staticCDstr, 10, 64)
-		if err != nil {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
-			Bot.Send(msg)
-			return fmt.Errorf("格式有误")
-		}
-		BotConifg.staticCD = int(staticCD)
-
-		randomCD, err := strconv.ParseInt(randomCDstr, 10, 64)
-		if err != nil {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "格式有误")
-			Bot.Send(msg)
-			return fmt.Errorf("格式有误")
-
-		}
-		BotConifg.randomCD = int(randomCD)
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", staticCD, randomCD))
-		Bot.Send(msg)
-		Sleep = 0
-		return nil
-	} else {
+	if update.Message.From.ID != BotConifg.intUserID && !BotConifg.debugFlag {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")
 		Bot.Send(msg)
 		return nil
 	}
+	args := strings.Split(update.Message.CommandArguments(), " ")
+	if len(args) != 2 {
+		errMessage := fmt.Errorf("格式异常: 需要两个参数 但是传递了 %d 个", len(args))
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, errMessage.Error())
+		Bot.Send(msg)
+		return errMessage
+	}
+
+	// 获取群组和用户id
+	staticCDstr := args[0]
+	randomCDstr := args[1]
+	staticCD, err := strconv.ParseInt(staticCDstr, 10, 64)
+	if err != nil {
+		errMessage := fmt.Errorf("格式有误: \"%s\"不是有效的整形数字", staticCDstr)
+
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, errMessage.Error())
+		Bot.Send(msg)
+		return errMessage
+	}
+	randomCD, err := strconv.ParseInt(randomCDstr, 10, 64)
+	if err != nil {
+		errMessage := fmt.Errorf("格式有误: \"%s\"不是有效的整形数字", randomCDstr)
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, errMessage.Error())
+		Bot.Send(msg)
+		return errMessage
+	}
+
+	BotConifg.randomCD = int(randomCD)
+	BotConifg.staticCD = int(staticCD)
+	msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", staticCD, randomCD))
+	Bot.Send(msg)
+	Sleep = 0
+	return nil
 }
+
 func debugHandler(update tgbotapi.Update) error {
 	if update.Message.From.ID == BotConifg.intUserID {
 		BotConifg.debugFlag = !BotConifg.debugFlag
-		fmtmsg := fmt.Sprintf("Debug模式当前为:%t", BotConifg.debugFlag)
+		fmtmsg := fmt.Sprintf("Debug模式当前为: %t", BotConifg.debugFlag)
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmtmsg)
 		Bot.Send(msg)
 	}
 	return nil
 }
 
-//TODO
-//添加指令修改休眠时间
-//拆分文件
-//添加独立的群组模式
-//羡慕次数统计
+// TODO
+// 添加指令修改休眠时间
+// 拆分文件
+// 添加独立的群组模式
+// 羡慕次数统计
