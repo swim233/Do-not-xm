@@ -1,8 +1,8 @@
 package xmchecker
 
 import (
-	"learn/goUnits/bot"
-	timer "learn/goUnits/timer"
+	"learn/units/bot"
+	"learn/units/timer"
 	"strings"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"

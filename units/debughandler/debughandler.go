@@ -2,7 +2,7 @@ package debughandler
 
 import (
 	"fmt"
-	"learn/goUnits/bot"
+	"learn/units/bot"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )

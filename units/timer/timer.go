@@ -1,7 +1,7 @@
 package timer
 
 import (
-	"learn/goUnits/bot"
+	"learn/units/bot"
 	"math/rand/v2"
 	"time"
 )

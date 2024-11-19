@@ -1,7 +1,7 @@
 package bot
 
 import (
-	logger "learn/goUnits/logger"
+	"learn/units/logger"
 	"log"
 	"os"
 	"regexp"
@@ -30,6 +30,8 @@ var (
 var BotConfig Config
 
 func InitBot() {
+	BotConfig.RandomCD = 30
+	BotConfig.StaticCD = 30
 	if _, err := os.Stat(".env"); os.IsNotExist(err) {
 		// 如果 .env 文件不存在，创建并写入默认值
 		logger.Info(".env 文件不存在，正在创建...")

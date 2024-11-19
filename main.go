@@ -1,13 +1,13 @@
 package main
 
 import (
-	bot "learn/goUnits/bot"
-	"learn/goUnits/changecdhandler"
-	"learn/goUnits/debughandler"
-	"learn/goUnits/logger"
-	"learn/goUnits/switchmodehandler"
-	timer "learn/goUnits/timer"
-	"learn/goUnits/xmchecker"
+	"learn/units/bot"
+	"learn/units/changecdhandler"
+	"learn/units/debughandler"
+	"learn/units/logger"
+	"learn/units/switchmodehandler"
+	"learn/units/timer"
+	"learn/units/xmchecker"
 )
 
 func main() {

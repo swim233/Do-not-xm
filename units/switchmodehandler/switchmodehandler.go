@@ -1,7 +1,7 @@
 package switchmodehandler
 
 import (
-	"learn/goUnits/bot"
+	"learn/units/bot"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )

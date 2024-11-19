@@ -2,8 +2,9 @@ package changecdhandler
 
 import (
 	"fmt"
-	"learn/goUnits/bot"
-	"learn/goUnits/timer"
+	"learn/units/bot"
+	"learn/units/timer"
+
 	"strconv"
 	"strings"
 
