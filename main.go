@@ -19,8 +19,8 @@ type Data struct {
 }
 
 func main() {
+	bot.InitBot()
 	logger.SetLogLevel(1)
-
 	bot.Bot.Debug = true
 	b := bot.Bot.AddHandle()
 	b.NewCommandProcessor("switchmode", switchmodehandler.SwitchModeHandler)
