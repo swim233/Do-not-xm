@@ -7,7 +7,7 @@ import (
 )
 
 func SwitchModeHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID == bot.BotConifg.IntUserID || bot.BotConifg.DebugFlag {
+	if update.Message.From.ID == bot.BotConfig.IntUserID || bot.BotConfig.DebugFlag {
 		if bot.Mode == "match" {
 			bot.Mode = "any"
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "当前模式为: 全局匹配")

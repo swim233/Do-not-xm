@@ -8,9 +8,9 @@ import (
 )
 
 func DebugHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID == bot.BotConifg.IntUserID {
-		bot.BotConifg.DebugFlag = !bot.BotConifg.DebugFlag
-		fmtmsg := fmt.Sprintf("Debug模式当前为: %t", bot.BotConifg.DebugFlag)
+	if update.Message.From.ID == bot.BotConfig.IntUserID {
+		bot.BotConfig.DebugFlag = !bot.BotConfig.DebugFlag
+		fmtmsg := fmt.Sprintf("Debug模式当前为: %t", bot.BotConfig.DebugFlag)
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmtmsg)
 		bot.Bot.Send(msg)
 	}

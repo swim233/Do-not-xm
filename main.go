@@ -1,21 +1,18 @@
 package main
 
 import (
-	_ "encoding/json"
 	bot "learn/goUnits/bot"
 	"learn/goUnits/changecdhandler"
 	"learn/goUnits/debughandler"
 	"learn/goUnits/logger"
 	"learn/goUnits/switchmodehandler"
+	timer "learn/goUnits/timer"
 	"learn/goUnits/xmchecker"
 )
 
-type Data struct {
-	ChatID int
-}
-
 func main() {
 	bot.InitBot()
+	go timer.Timer()
 	logger.SetLogLevel(1)
 	bot.Bot.Debug = true
 	b := bot.Bot.AddHandle()

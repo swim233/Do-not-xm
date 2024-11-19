@@ -3,6 +3,7 @@ package changecdhandler
 import (
 	"fmt"
 	"learn/goUnits/bot"
+	"learn/goUnits/timer"
 	"strconv"
 	"strings"
 
@@ -10,7 +11,7 @@ import (
 )
 
 func ChangeCdHandler(update tgbotapi.Update) error {
-	if update.Message.From.ID != bot.BotConifg.IntUserID && !bot.BotConifg.DebugFlag {
+	if update.Message.From.ID != bot.BotConfig.IntUserID && !bot.BotConfig.DebugFlag {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")
 		bot.Bot.Send(msg)
 		return nil
@@ -42,10 +43,10 @@ func ChangeCdHandler(update tgbotapi.Update) error {
 		return errMessage
 	}
 
-	bot.BotConifg.RandomCD = int(RandomCD)
-	bot.BotConifg.StaticCD = int(StaticCD)
+	bot.BotConfig.RandomCD = int(RandomCD)
+	bot.BotConfig.StaticCD = int(StaticCD)
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", StaticCD, RandomCD))
 	bot.Bot.Send(msg)
-	bot.Sleep = 0
+	*timer.Time = 0
 	return nil
 }

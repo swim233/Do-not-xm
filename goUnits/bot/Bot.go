@@ -24,11 +24,10 @@ type Config struct {
 
 var (
 	CheckFlag = 0
-	Sleep     = 0
 	CheckXm   = regexp.MustCompile(".*羡.*慕.*")
 	Mode      = "match"
 )
-var BotConifg Config
+var BotConfig Config
 
 func InitBot() {
 	if _, err := os.Stat(".env"); os.IsNotExist(err) {
@@ -56,16 +55,16 @@ UserID=
 		logger.Error("%s", err)
 	}
 
-	BotConifg.Token = os.Getenv("Token")
-	BotConifg.UserID = os.Getenv("UserID")
-	BotConifg.IntUserID, err = strconv.ParseInt(BotConifg.UserID, 10, 64)
+	BotConfig.Token = os.Getenv("Token")
+	BotConfig.UserID = os.Getenv("UserID")
+	BotConfig.IntUserID, err = strconv.ParseInt(BotConfig.UserID, 10, 64)
 	if err != nil {
 		logger.Error("%s", err)
 	}
-	qwq, err := tgbotapi.NewBotAPI(BotConifg.Token)
+	qwq, err := tgbotapi.NewBotAPI(BotConfig.Token)
 	Bot = qwq
 	if err != nil {
-		log.Printf("%s", BotConifg.Token)
+		log.Printf("%s", BotConfig.Token)
 		log.Printf("%s", err)
 	}
 	if err != nil {
