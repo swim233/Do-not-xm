@@ -10,7 +10,7 @@ import (
 	"learn/units/xmchecker"
 )
 
-func Main() {
+func main() {
 	bot.InitBot()
 	go timer.Timer()
 	logger.SetLogLevel(1)
