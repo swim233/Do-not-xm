@@ -2,12 +2,8 @@ package main
 
 import (
 	"learn/units/bot"
-	"learn/units/cdhandler"
-	"learn/units/changecdhandler"
-	"learn/units/debughandler"
+	"learn/units/handler"
 	"learn/units/logger"
-	"learn/units/pinghandler"
-	"learn/units/switchmodehandler"
 	"learn/units/timer"
 	"learn/units/xmchecker"
 )
@@ -18,11 +14,11 @@ func main() {
 	logger.SetLogLevel(1)
 	bot.Bot.Debug = true
 	b := bot.Bot.AddHandle()
-	b.NewCommandProcessor("switchmode", switchmodehandler.SwitchModeHandler)
-	b.NewCommandProcessor("changecd", changecdhandler.ChangeCdHandler)
-	b.NewCommandProcessor("debug", debughandler.DebugHandler)
-	b.NewCommandProcessor("ping", pinghandler.PingHandler)
-	b.NewCommandProcessor("cd", cdhandler.CdHandler)
+	b.NewCommandProcessor("switchmode", handler.SwitchModeHandler)
+	b.NewCommandProcessor("changecd", handler.ChangeCdHandler)
+	b.NewCommandProcessor("debug", handler.DebugHandler)
+	b.NewCommandProcessor("ping", handler.PingHandler)
+	b.NewCommandProcessor("cd", handler.CdHandler)
 	b.NewProcessor(xmchecker.XmChecker, xmchecker.SendXm)
 	b.Run()
 }

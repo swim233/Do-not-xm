@@ -1,4 +1,4 @@
-package cdhandler
+package handler
 
 import (
 	"fmt"

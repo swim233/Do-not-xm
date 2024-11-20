@@ -1,4 +1,4 @@
-package pinghandler
+package handler
 
 import (
 	"learn/units/bot"

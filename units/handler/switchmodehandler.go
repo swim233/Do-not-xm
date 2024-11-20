@@ -1,4 +1,4 @@
-package switchmodehandler
+package handler
 
 import (
 	"learn/units/bot"
