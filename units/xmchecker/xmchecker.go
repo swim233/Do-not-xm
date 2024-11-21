@@ -3,6 +3,7 @@ package xmchecker
 import (
 	"learn/units/bot"
 	"learn/units/timer"
+	"math/rand/v2"
 	"strings"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
@@ -33,6 +34,7 @@ func IsXm(update string) bool {
 }
 
 func SendXm(update tgbotapi.Update) error {
+	*timer.Time = (rand.IntN(bot.BotConfig.RandomCD) + bot.BotConfig.StaticCD)
 	msgID := update.Message.MessageID
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 	msg.ReplyToMessageID = msgID

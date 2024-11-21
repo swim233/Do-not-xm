@@ -2,8 +2,6 @@ package timer
 
 import (
 	"fmt"
-	"learn/units/bot"
-	"math/rand/v2"
 	"time"
 )
 
@@ -11,7 +9,7 @@ var Time = new(int)
 
 func CheckSleep() bool {
 	if *Time <= 0 {
-		*Time = (rand.IntN(bot.BotConfig.RandomCD) + bot.BotConfig.StaticCD)
+
 		return true
 	} else {
 		return false
@@ -35,7 +33,6 @@ func Calculation(Time *int) string {
 	var Mins = new(int)
 	*Mins = *Time / 60
 	sec := *Time % 60
-
 	*Hours = 0
 	if *Mins >= 60 {
 		*Hours = *Mins / 60
