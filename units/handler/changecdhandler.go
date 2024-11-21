@@ -19,7 +19,7 @@ func ChangeCdHandler(update tgbotapi.Update) error {
 	}
 	args := strings.Split(update.Message.CommandArguments(), " ")
 	if len(args) != 2 {
-		errMessage := fmt.Errorf("格式异常: 需要两个参数 但是传递了 %d 个", len(args))
+		errMessage := fmt.Errorf("格式异常: 需要 2 个参数 但是传递了 %d 个", len(args))
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, errMessage.Error())
 		bot.Bot.Send(msg)
 		return errMessage
@@ -46,7 +46,12 @@ func ChangeCdHandler(update tgbotapi.Update) error {
 
 	bot.BotConfig.RandomCD = int(RandomCD)
 	bot.BotConfig.StaticCD = int(StaticCD)
-	msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmt.Sprintf("修改成功 当前cd为%ds固定cd+%ds随机cd", StaticCD, RandomCD))
+	var tmpStaticCD = new(int)
+	var tmpRandomCD = new(int)
+	*tmpStaticCD = bot.BotConfig.StaticCD
+	*tmpRandomCD = bot.BotConfig.RandomCD
+
+	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "修改成功，当前CD为： "+timer.Calculation(tmpStaticCD)+" 固定CD + "+timer.Calculation(tmpRandomCD)+" 随机CD")
 	bot.Bot.Send(msg)
 	*timer.Time = 0
 	return nil

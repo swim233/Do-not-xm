@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"learn/units/bot"
 	"learn/units/timer"
 
@@ -9,7 +8,7 @@ import (
 )
 
 func CdHandler(update tgbotapi.Update) error {
-	fmtmsg := fmt.Sprintf("当前剩余CD:%ds", *timer.Time)
+	fmtmsg := "当前剩余CD： " + timer.Calculation(timer.Time)
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, fmtmsg)
 	bot.Bot.Send(msg)
 	return nil

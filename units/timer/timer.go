@@ -1,6 +1,7 @@
 package timer
 
 import (
+	"fmt"
 	"learn/units/bot"
 	"math/rand/v2"
 	"time"
@@ -27,4 +28,19 @@ func Timer() {
 			time.Sleep(1 * time.Second)
 		}
 	}
+}
+
+func Calculation(Time *int) string {
+	var Hours = new(int)
+	var Mins = new(int)
+	*Mins = *Time / 60
+	sec := *Time % 60
+
+	*Hours = 0
+	if *Mins >= 60 {
+		*Hours = *Mins / 60
+		*Mins = *Mins % 60
+	}
+	str := fmt.Sprintf("%d 小时 %d 分钟 %d 秒", *Hours, *Mins, sec)
+	return str
 }
