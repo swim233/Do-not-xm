@@ -2,8 +2,8 @@ package xmchecker
 
 import (
 	"learn/units/bot"
+	"learn/units/counter"
 	"learn/units/handler"
-	"learn/units/timer"
 	"math/rand/v2"
 	"strings"
 
@@ -11,7 +11,7 @@ import (
 )
 
 func XmChecker(update tgbotapi.Update) bool {
-	if update.Message != nil && bot.Mode == "match" && timer.CheckSleep() {
+	if update.Message != nil && bot.Mode == "match" && counter.CheckSleep() {
 		if update.Message.From.ID == bot.BotConfig.IntUserID {
 			bot.CheckFlag = update.Message.MessageID
 		}
@@ -19,7 +19,7 @@ func XmChecker(update tgbotapi.Update) bool {
 			return true
 		}
 	}
-	if update.Message != nil && bot.Mode == "any" && IsXm(update.Message.Text) && (update.Message.From.ID != bot.BotConfig.IntUserID) && timer.CheckSleep() {
+	if update.Message != nil && bot.Mode == "any" && IsXm(update.Message.Text) && (update.Message.From.ID != bot.BotConfig.IntUserID) && counter.CheckSleep() {
 
 		return true
 	}
@@ -35,7 +35,7 @@ func IsXm(update string) bool {
 }
 
 func SendXm(update tgbotapi.Update) error {
-	*timer.Time = (rand.IntN(bot.BotConfig.RandomCD) + bot.BotConfig.StaticCD)
+	*counter.Time = (rand.IntN(bot.BotConfig.RandomCD) + bot.BotConfig.StaticCD)
 	msgID := update.Message.MessageID
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
 	handler.LastXmMessageID = msgID
