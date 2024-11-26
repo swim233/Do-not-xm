@@ -19,7 +19,7 @@ func CheckSleep() bool {
 func Timer() {
 	*Time = 0
 	for {
-		if *Time >= 0 {
+		if *Time > 0 {
 			*Time = *Time - 1
 			time.Sleep(1 * time.Second)
 		} else {

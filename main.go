@@ -19,6 +19,7 @@ func main() {
 	b.NewCommandProcessor("debug", handler.DebugHandler)
 	b.NewCommandProcessor("ping", handler.PingHandler)
 	b.NewCommandProcessor("cd", handler.CdHandler)
+	b.NewCommandProcessor("lastxm", handler.LastXmHandler)
 	b.NewProcessor(xmchecker.XmChecker, xmchecker.SendXm)
 	b.Run()
 }
