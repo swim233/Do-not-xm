@@ -9,7 +9,6 @@ var Time = new(int)
 
 func CheckSleep() bool {
 	if *Time <= 0 {
-
 		return true
 	} else {
 		return false
@@ -28,8 +27,8 @@ func Timer() {
 }
 
 func Calculation(Time *int) string {
-	var Hours = new(int)
-	var Mins = new(int)
+	Hours := new(int)
+	Mins := new(int)
 	*Mins = *Time / 60
 	sec := *Time % 60
 	*Hours = 0

@@ -20,11 +20,9 @@ func XmChecker(update tgbotapi.Update) bool {
 		}
 	}
 	if update.Message != nil && bot.Mode == "any" && IsXm(update.Message.Text) && (update.Message.From.ID != bot.BotConfig.IntUserID) && counter.CheckSleep() {
-
 		return true
 	}
 	return false
-
 }
 
 func IsXm(update string) bool {
@@ -38,7 +36,7 @@ func SendXm(update tgbotapi.Update) error {
 	*counter.Time = (rand.IntN(bot.BotConfig.RandomCD) + bot.BotConfig.StaticCD)
 	msgID := update.Message.MessageID
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "不许羡慕！")
-	handler.LastXmMessageID = msgID
+	handler.RecordLastXm(&update)
 	msg.ReplyToMessageID = msgID
 	bot.Bot.Send(msg)
 	return nil
