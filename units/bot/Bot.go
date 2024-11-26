@@ -3,6 +3,8 @@ package bot
 import (
 	"learn/units/logger"
 	"log"
+	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"strconv"
@@ -59,6 +61,7 @@ UserID=
 
 	BotConfig.Token = os.Getenv("Token")
 	BotConfig.UserID = os.Getenv("UserID")
+
 	BotConfig.IntUserID, err = strconv.ParseInt(BotConfig.UserID, 10, 64)
 	if err != nil {
 		logger.Error("%s", err)
@@ -72,4 +75,34 @@ UserID=
 	if err != nil {
 		logger.Error("%s", err)
 	}
+
+	proxy := FetchProxy()
+	if proxy != "" {
+		proxyURL, err := url.Parse(proxy)
+		if err != nil {
+			logger.Error("Failed to parse proxy url: %s", proxy)
+			return
+		}
+		client := &http.Client{
+			Transport: &http.Transport{
+				Proxy: http.ProxyURL(proxyURL),
+			},
+		}
+		Bot.Client = client
+		logger.Info("Using proxy: %s", proxy)
+	}
+}
+
+func FetchProxy() string {
+	proxy := os.Getenv("HTTP_PROXY")
+	if proxy == "" {
+		proxy = os.Getenv("HTTPS_PROXY")
+	}
+	if proxy == "" {
+		proxy = os.Getenv("http_proxy")
+	}
+	if proxy == "" {
+		proxy = os.Getenv("https_proxy")
+	}
+	return proxy
 }
