@@ -11,6 +11,7 @@ import (
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )
 
+// 修改cd
 func ChangeCdHandler(update tgbotapi.Update) error {
 	if update.Message.From.ID != bot.BotConfig.IntUserID && !bot.BotConfig.DebugFlag {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "你没有使用该命令的权限！")

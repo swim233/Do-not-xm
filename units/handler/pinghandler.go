@@ -6,6 +6,7 @@ import (
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )
 
+// 发送ping
 func PingHandler(update tgbotapi.Update) error {
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Pong！")
 	bot.Bot.Send(msg)

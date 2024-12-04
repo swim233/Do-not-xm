@@ -7,6 +7,7 @@ import (
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )
 
+// 更改debug模式
 func DebugHandler(update tgbotapi.Update) error {
 	if update.Message.From.ID == bot.BotConfig.IntUserID {
 		bot.BotConfig.DebugFlag = !bot.BotConfig.DebugFlag

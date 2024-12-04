@@ -7,6 +7,7 @@ import (
 
 var Time = new(int)
 
+// 判断是否满足计时器
 func CheckSleep() bool {
 	if *Time <= 0 {
 		return true
@@ -15,6 +16,7 @@ func CheckSleep() bool {
 	}
 }
 
+// 计时器
 func Timer() {
 	*Time = 0
 	for {
@@ -26,6 +28,7 @@ func Timer() {
 	}
 }
 
+// 格式化时间输出
 func Calculation(Time *int) string {
 	Hours := new(int)
 	Mins := new(int)
