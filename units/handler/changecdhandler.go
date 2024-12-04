@@ -3,7 +3,7 @@ package handler
 import (
 	"fmt"
 	"learn/units/bot"
-	"learn/units/timer"
+	"learn/units/counter"
 
 	"strconv"
 	"strings"
@@ -52,8 +52,8 @@ func ChangeCdHandler(update tgbotapi.Update) error {
 	*tmpStaticCD = bot.BotConfig.StaticCD
 	*tmpRandomCD = bot.BotConfig.RandomCD
 
-	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "修改成功，当前CD为： "+timer.Calculation(tmpStaticCD)+" 固定CD + "+timer.Calculation(tmpRandomCD)+" 随机CD")
+	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "修改成功，当前CD为： "+counter.Calculation(tmpStaticCD)+" 固定CD + "+counter.Calculation(tmpRandomCD)+" 随机CD")
 	bot.Bot.Send(msg)
-	*timer.Time = 0
+	*counter.Time = 0
 	return nil
 }

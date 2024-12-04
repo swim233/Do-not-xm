@@ -2,15 +2,15 @@ package main
 
 import (
 	"learn/units/bot"
+	"learn/units/counter"
 	"learn/units/handler"
 	"learn/units/logger"
-	"learn/units/timer"
 	"learn/units/xmchecker"
 )
 
 func main() {
 	bot.InitBot()
-	go timer.Timer()
+	go counter.Timer()
 	logger.SetLogLevel(1)
 	bot.Bot.Debug = true
 	b := bot.Bot.AddHandle()
