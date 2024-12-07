@@ -26,7 +26,9 @@ func LastXmHandler(update tgbotapi.Update) error {
 	{
 		iterator := groupXm.NewReverseIterator()
 		for item, ok := iterator.Next(); ok; item, ok = iterator.Next() {
-			builder.WriteString(fmt.Sprintf("%s https://t.me/%d/%d\n", item.Message.Chat.Title, item.Message.Chat.ID, item.Message.MessageID))
+			strMsgID := string(item.Message.Chat.ID)
+			printMsgID := strMsgID[4:]
+			builder.WriteString(fmt.Sprintf("%s https://t.me/c/%s/%d\n", item.Message.Chat.Title, printMsgID, item.Message.MessageID))
 		}
 	}
 	builder.WriteString(fmt.Sprintf("上%d条其他xm:\n", otherXm.Size()))
