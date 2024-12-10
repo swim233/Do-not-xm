@@ -59,28 +59,16 @@ func (l *Logger) initLogger() {
 	l.logLevel = LevelInfo
 }
 
-func (l *Logger) log(level int, levelStr string, format string, v ...interface{}) {
+func (l *Logger) log(level int, format string, v ...interface{}) {
 	if level < l.logLevel {
 		return
 	}
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
 
-	var colorStart string
+	colorStart := GetColorStr(level)
+	levelStr := GetLevelStr(level)
 	colorEnd := "\033[0m"
-
-	switch levelStr {
-	case "[DEBUG]":
-		colorStart = "\033[32m"
-	case "[INFO]":
-		colorStart = "\033[34m"
-	case "[WARN]":
-		colorStart = "\033[33m"
-	case "[ERROR]":
-		colorStart = "\033[31m"
-	default:
-		colorStart = "\033[37m"
-	}
 
 	msg := fmt.Sprintf(format, v...)
 	logMsg := fmt.Sprintf("%s %s", levelStr, msg)
@@ -88,20 +76,50 @@ func (l *Logger) log(level int, levelStr string, format string, v ...interface{}
 	l.logger.Output(3, fmt.Sprintf("%s%s%s\n", colorStart, logMsg, colorEnd))
 }
 
+func GetLevelStr(level int) string {
+	switch level {
+	case LevelDebug:
+		return "[DEBUG]"
+	case LevelInfo:
+		return "[INFO]"
+	case LevelWarn:
+		return "[WARN]"
+	case LevelError:
+		return "[ERROR]"
+	default:
+		return "[INFO]"
+	}
+}
+
+func GetColorStr(level int) string {
+	switch level {
+	case LevelDebug:
+		return "\033[32m"
+	case LevelInfo:
+		return "\033[34m"
+	case LevelWarn:
+		return "\033[33m"
+	case LevelError:
+		return "\033[31m"
+	default:
+		return "\033[37m"
+	}
+}
+
 func Debug(format string, v ...interface{}) {
-	GetInstance().log(LevelDebug, "[DEBUG]", format, v...)
+	GetInstance().log(LevelDebug, format, v...)
 }
 
 func Info(format string, v ...interface{}) {
-	GetInstance().log(LevelInfo, "[INFO]", format, v...)
+	GetInstance().log(LevelInfo, format, v...)
 }
 
 func Warn(format string, v ...interface{}) {
-	GetInstance().log(LevelWarn, "[WARN]", format, v...)
+	GetInstance().log(LevelWarn, format, v...)
 }
 
 func Error(format string, v ...interface{}) {
-	GetInstance().log(LevelError, "[ERROR]", format, v...)
+	GetInstance().log(LevelError, format, v...)
 }
 
 func SetLogLevel(level int) {
@@ -109,19 +127,19 @@ func SetLogLevel(level int) {
 }
 
 func ParseLogLevel(levelStr string) int {
-	levelStr = strings.ToUpper(levelStr) // Convert to uppercase
-	switch levelStr {
-	case "DEBUG":
+	if strings.EqualFold("DEBUG", levelStr) {
 		return LevelDebug
-	case "INFO":
-		return LevelInfo
-	case "WARN":
-		return LevelWarn
-	case "ERROR":
-		return LevelError
-	default:
-		return LevelInfo // default value
 	}
+	if strings.EqualFold("INFO", levelStr) {
+		return LevelInfo
+	}
+	if strings.EqualFold("WARN", levelStr) {
+		return LevelWarn
+	}
+	if strings.EqualFold("ERROR", levelStr) {
+		return LevelError
+	}
+	return LevelInfo
 }
 
 func Close() {

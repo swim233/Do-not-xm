@@ -15,12 +15,13 @@ import (
 var Bot *tgbotapi.BotAPI
 
 type Config struct {
-	Token     string
-	UserID    string
-	IntUserID int64
-	RandomCD  int
-	StaticCD  int
-	DebugFlag bool
+	Token       string
+	UserID      string
+	IntUserID   int64
+	RandomCD    int
+	StaticCD    int
+	DebugFlag   bool
+	ApiLogLevel int
 }
 
 var (
@@ -59,6 +60,7 @@ UserID=
 	}
 
 	loglevel := logger.ParseLogLevel(os.Getenv("LogLevel"))
+	BotConfig.ApiLogLevel = logger.ParseLogLevel(os.Getenv("ApiLogLevel"))
 	logger.SetLogLevel(loglevel)
 	BotConfig.Token = os.Getenv("Token")
 	BotConfig.UserID = os.Getenv("UserID")
@@ -69,8 +71,7 @@ UserID=
 	}
 	adapter := &logger.TelegramBotApiLoggerAdapter{}
 	adapter.SetLogger(logger.GetInstance())
-	adapter.SetLogLevel(logger.LevelDebug)
-	adapter.SetLogLevelStrProvider(func(level int) string { return "[DEBUG]" }) // workaround from logger class
+	adapter.SetLogLevel(BotConfig.ApiLogLevel)
 	tgbotapi.SetLogger(adapter)
 	qwq, err := tgbotapi.NewBotAPI(BotConfig.Token)
 	Bot = qwq
