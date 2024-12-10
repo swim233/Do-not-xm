@@ -25,8 +25,10 @@ type Logger struct {
 	mutex    sync.Mutex
 }
 
-var instance *Logger
-var once sync.Once
+var (
+	instance *Logger
+	once     sync.Once
+)
 
 func getInstance() *Logger {
 	once.Do(func() {
@@ -65,7 +67,7 @@ func (l *Logger) log(level int, levelStr string, format string, v ...interface{}
 	defer l.mutex.Unlock()
 
 	var colorStart string
-	var colorEnd = "\033[0m"
+	colorEnd := "\033[0m"
 
 	switch levelStr {
 	case "[DEBUG]":

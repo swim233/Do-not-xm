@@ -9,7 +9,8 @@ import (
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 )
-//检查
+
+// 检查
 func XmChecker(update tgbotapi.Update) bool {
 	if update.Message != nil && bot.Mode == "match" && counter.CheckSleep() {
 		if update.Message.From.ID == bot.BotConfig.IntUserID {

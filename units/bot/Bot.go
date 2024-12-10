@@ -2,7 +2,6 @@ package bot
 
 import (
 	"learn/units/logger"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -41,7 +40,7 @@ func InitBot() {
 		// 创建并打开 .env 文件
 		file, err := os.Create(".env")
 		if err != nil {
-			log.Fatalf("创建 .env 文件失败: %v", err)
+			logger.Error("创建 .env 文件失败: %v", err)
 		}
 		defer file.Close()
 
@@ -50,7 +49,7 @@ func InitBot() {
 UserID=
 `
 		if _, err := file.WriteString(defaultEnv); err != nil {
-			log.Fatalf("写入 .env 文件失败: %v", err)
+			logger.Error("写入 .env 文件失败: %v", err)
 		}
 		logger.Info(".env 文件已创建，并写入默认内容.")
 	}
@@ -69,8 +68,8 @@ UserID=
 	qwq, err := tgbotapi.NewBotAPI(BotConfig.Token)
 	Bot = qwq
 	if err != nil {
-		log.Printf("%s", BotConfig.Token)
-		log.Printf("%s", err)
+		logger.Error("%s", BotConfig.Token)
+		logger.Error("%s", err)
 	}
 	if err != nil {
 		logger.Error("%s", err)

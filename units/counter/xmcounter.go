@@ -5,8 +5,7 @@ import (
 	"os"
 )
 
-type Counter struct {
-}
+type Counter struct{}
 
 func XmCounter(chatID int64) {
 	file, err := os.Open("xmcounter.csv")

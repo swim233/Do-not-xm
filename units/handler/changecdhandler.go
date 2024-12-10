@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"learn/units/bot"
 	"learn/units/counter"
-
 	"strconv"
 	"strings"
 
@@ -47,8 +46,8 @@ func ChangeCdHandler(update tgbotapi.Update) error {
 
 	bot.BotConfig.RandomCD = int(RandomCD)
 	bot.BotConfig.StaticCD = int(StaticCD)
-	var tmpStaticCD = new(int)
-	var tmpRandomCD = new(int)
+	tmpStaticCD := new(int)
+	tmpRandomCD := new(int)
 	*tmpStaticCD = bot.BotConfig.StaticCD
 	*tmpRandomCD = bot.BotConfig.RandomCD
 
