@@ -46,8 +46,10 @@ func InitBot() {
 		defer file.Close()
 
 		// 写入默认的环境变量内容
-		defaultEnv := `Token=
-UserID=
+		defaultEnv := `Token=YOUR_TOKEN_ID
+UserID=YOUR_USER_ID
+LogLevel=DEBUG/INFO/WARN/ERROR
+ApiLogLevel=DEBUG/INFO/WARN/ERROR
 `
 		if _, err := file.WriteString(defaultEnv); err != nil {
 			logger.Error("写入 .env 文件失败: %v", err)
