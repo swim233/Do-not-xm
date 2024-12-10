@@ -25,8 +25,8 @@ func LastXmHandler(update tgbotapi.Update) error {
 	{
 		for i := len(groupXm) - 1; i >= 0; i-- {
 			item := groupXm[i]
-			strMsgID := string(item.Chat.ID)
-			printMsgID := strMsgID[4:]
+			strMsgID := fmt.Sprintf("%d", item.Chat.ID)
+			printMsgID := strMsgID[4:] // remove -100 prefix from chat id
 			builder.WriteString(fmt.Sprintf("%s https://t.me/c/%s/%d\n", item.Chat.Title, printMsgID, item.MessageID))
 		}
 	}
