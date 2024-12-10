@@ -4,14 +4,12 @@ import (
 	"learn/units/bot"
 	"learn/units/counter"
 	"learn/units/handler"
-	"learn/units/logger"
 	"learn/units/xmchecker"
 )
 
 func main() {
 	bot.InitBot()
 	go counter.Timer()
-	logger.SetLogLevel(1)
 	bot.Bot.Debug = true
 	b := bot.Bot.AddHandle()
 	b.NewCommandProcessor("switchmode", handler.SwitchModeHandler)

@@ -30,7 +30,7 @@ var (
 	once     sync.Once
 )
 
-func getInstance() *Logger {
+func GetInstance() *Logger {
 	once.Do(func() {
 		instance = &Logger{}
 		instance.initLogger()
@@ -89,23 +89,23 @@ func (l *Logger) log(level int, levelStr string, format string, v ...interface{}
 }
 
 func Debug(format string, v ...interface{}) {
-	getInstance().log(LevelDebug, "[DEBUG]", format, v...)
+	GetInstance().log(LevelDebug, "[DEBUG]", format, v...)
 }
 
 func Info(format string, v ...interface{}) {
-	getInstance().log(LevelInfo, "[INFO]", format, v...)
+	GetInstance().log(LevelInfo, "[INFO]", format, v...)
 }
 
 func Warn(format string, v ...interface{}) {
-	getInstance().log(LevelWarn, "[WARN]", format, v...)
+	GetInstance().log(LevelWarn, "[WARN]", format, v...)
 }
 
 func Error(format string, v ...interface{}) {
-	getInstance().log(LevelError, "[ERROR]", format, v...)
+	GetInstance().log(LevelError, "[ERROR]", format, v...)
 }
 
 func SetLogLevel(level int) {
-	getInstance().logLevel = level
+	GetInstance().logLevel = level
 }
 
 func ParseLogLevel(levelStr string) int {

@@ -58,6 +58,8 @@ UserID=
 		logger.Error("%s", err)
 	}
 
+	loglevel := logger.ParseLogLevel(os.Getenv("LogLevel"))
+	logger.SetLogLevel(loglevel)
 	BotConfig.Token = os.Getenv("Token")
 	BotConfig.UserID = os.Getenv("UserID")
 
@@ -65,6 +67,11 @@ UserID=
 	if err != nil {
 		logger.Error("%s", err)
 	}
+	adapter := &logger.TelegramBotApiLoggerAdapter{}
+	adapter.SetLogger(logger.GetInstance())
+	adapter.SetLogLevel(logger.LevelDebug)
+	adapter.SetLogLevelStrProvider(func(level int) string { return "[DEBUG]" }) // workaround from logger class
+	tgbotapi.SetLogger(adapter)
 	qwq, err := tgbotapi.NewBotAPI(BotConfig.Token)
 	Bot = qwq
 	if err != nil {
