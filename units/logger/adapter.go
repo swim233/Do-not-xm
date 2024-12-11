@@ -1,6 +1,9 @@
 package logger
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type TelegramBotApiLoggerAdapter struct {
 	logger   *Logger
@@ -16,7 +19,7 @@ func (l *TelegramBotApiLoggerAdapter) Printf(format string, v ...interface{}) {
 func (l *TelegramBotApiLoggerAdapter) Println(v ...interface{}) {
 	builder := strings.Builder{}
 	for _, item := range v {
-		builder.WriteString(item.(string))
+		builder.WriteString(fmt.Sprintf("%v", item))
 	}
 	l.logger.log(l.logLevel, "%s", builder.String())
 }

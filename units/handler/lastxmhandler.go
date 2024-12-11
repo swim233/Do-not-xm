@@ -19,7 +19,6 @@ var (
 )
 
 func LastXmHandler(update tgbotapi.Update) error {
-	// fmtmsg := fmt.Sprintf("上一条xm为：https://t.me/ArknightsZH/%d", LastXmMessageID)
 	builder := strings.Builder{}
 	builder.WriteString(fmt.Sprintf("上%d条群组xm:\n", len(groupXm)))
 	{
