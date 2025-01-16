@@ -22,6 +22,7 @@ type Config struct {
 	StaticCD    int
 	DebugFlag   bool
 	ApiLogLevel int
+	Status      string
 }
 
 var (
@@ -66,6 +67,7 @@ ApiLogLevel=DEBUG/INFO/WARN/ERROR
 	logger.SetLogLevel(loglevel)
 	BotConfig.Token = os.Getenv("Token")
 	BotConfig.UserID = os.Getenv("UserID")
+	BotConfig.Status = os.Getenv("Status")
 
 	BotConfig.IntUserID, err = strconv.ParseInt(BotConfig.UserID, 10, 64)
 	if err != nil {
