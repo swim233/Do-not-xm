@@ -25,7 +25,7 @@ func NewMessageProcessor() *MessageProcessor {
 // 处理消息
 func (m *MessageProcessor) Processor(u tgbotapi.Update) error {
 	xmHandler, exists := m.getXmHandler(u)
-	m.SendMessage(u, *xmHandler)
+	m.SendMessage(u, xmHandler)
 	xmHandler.UpdateChannels <- u
 	if !exists {
 		go xmHandler.ListenMessage(xmHandler.UpdateChannels)
@@ -35,17 +35,16 @@ func (m *MessageProcessor) Processor(u tgbotapi.Update) error {
 }
 
 // 发送do_not_xm消息
-func (m *MessageProcessor) SendMessage(u tgbotapi.Update, handler XmHandler) {
+func (m *MessageProcessor) SendMessage(u tgbotapi.Update, handler *XmHandler) {
 	if handler.IsXm(u) && handler.CoolDownTime == 0 {
 		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "不许羡慕！")
 		msg.ReplyToMessageID = u.Message.MessageID
 		utils.Bot.Send(msg)
-		handler.CoolDownTime = handler.StaticCoolDown + func(handler XmHandler) int {
-			if handler.RandomCoolDown > 0 {
-				return rand.Intn(handler.RandomCoolDown + 1)
-			}
-			return 0
-		}(handler)
+		if handler.RandomCoolDown > 0 {
+			handler.CoolDownTime = handler.StaticCoolDown + rand.Intn(handler.RandomCoolDown+1)
+		} else {
+			handler.CoolDownTime = handler.StaticCoolDown
+		}
 	}
 }
 
@@ -79,12 +78,11 @@ func (m *MessageProcessor) ChangeCoolDown(u tgbotapi.Update) error {
 			return tgbotapi.NewMessage(u.Message.Chat.ID, msgStr)
 		}(u))
 
-		xmHandler.CoolDownTime = xmHandler.StaticCoolDown + func(handler *XmHandler) int {
-			if handler.RandomCoolDown > 0 {
-				return rand.Intn(handler.RandomCoolDown + 1)
-			}
-			return 0
-		}(xmHandler)
+		if xmHandler.RandomCoolDown > 0 {
+			xmHandler.CoolDownTime = xmHandler.StaticCoolDown + rand.Intn(xmHandler.RandomCoolDown+1)
+		} else {
+			xmHandler.CoolDownTime = xmHandler.StaticCoolDown
+		}
 
 	}
 	return nil
@@ -94,7 +92,7 @@ func (m *MessageProcessor) ChangeCoolDown(u tgbotapi.Update) error {
 func (m *MessageProcessor) CD(u tgbotapi.Update) error {
 	xmHandler, _ := m.getXmHandler(u)
 	msg := tgbotapi.NewMessage(u.Message.Chat.ID, fmt.Sprintf("当前剩余CD %s",
-		formatSeconds(xmHandler.RandomCoolDown+xmHandler.StaticCoolDown)))
+		formatSeconds(xmHandler.CoolDownTime)))
 	utils.Bot.Send(msg)
 	return nil
 }

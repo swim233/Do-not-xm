@@ -12,8 +12,8 @@ import (
 )
 
 type XmHandler struct {
-	WaitingForMessageID int //监听用户消息id
-	WaitingForGroupID   int //监听群组id
+	WaitingForMessageID int   //监听用户消息id
+	WaitingForGroupID   int64 //监听群组id
 	UpdateChannels      chan tgbotapi.Update
 	HandlerConfig       //消息处理配置
 	Timer               //计时器
@@ -38,7 +38,7 @@ func NewXmHandler(waitingForGroupID int64, u tgbotapi.Update) *XmHandler {
 
 	newHandler := &XmHandler{
 		WaitingForMessageID: 0,
-		WaitingForGroupID:   int(waitingForGroupID),
+		WaitingForGroupID:   waitingForGroupID,
 		HandlerConfig: HandlerConfig{
 			WaitingForUserID: utils.BotConfig.WaitingForUserID,
 			PermissionUserID: []int64{utils.BotConfig.WaitingForUserID},
