@@ -1,0 +1,551 @@
+2025/04/20 00:44:56 bot.go:37: [INFO] .env 文件不存在，正在创建...
+2025/04/20 00:44:56 bot.go:75: [INFO] .env 文件已创建，并写入默认内容.
+2025/04/20 00:46:11 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 00:46:11 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 00:46:26 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633340,
+"message":{"message_id":1967,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-1001536556159,"title":"test for info","type":"supergroup"},"date":1745081189,"text":"1"}}]}
+
+2025/04/20 00:46:26 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633341 timeout:60]
+
+2025/04/20 00:46:26 custom.go:119: [INFO] Recovered err=assignment to entry in nil map, stack=goroutine 1 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:26 +0x5e
+github.com/ijnkawakaze/telegram-bot-api.(*Bot).Run.recoverWarp.func1.1()
+	C:/msys64/home/TheSw1m/go/pkg/mod/github.com/ijnkawakaze/telegram-bot-api@v1.0.9/custom.go:118 +0x38
+panic({0x7f0260?, 0x8ca1d0?})
+	C:/Program Files/Go/src/runtime/panic.go:785 +0x132
+github.com/swim233/do_not_xm/utils/handler.(*MessageProcessor).Processor(0xc000292098, {0x1bc1003c, 0xc0003c2008, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...})
+	C:/Users/85327/source/repos/gorepo/do_not_xm/src/utils/handler/messageSendHandler.go:20 +0x2d3
+github.com/ijnkawakaze/telegram-bot-api.(*Bot).Run.recoverWarp.func1({0x1bc1003c, 0xc0003c2008, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...})
+	C:/msys64/home/TheSw1m/go/pkg/mod/github.com/ijnkawakaze/telegram-bot-api@v1.0.9/custom.go:122 +0x7b
+github.com/ijnkawakaze/telegram-bot-api.(*Bot).Run(0xc0000ebed8)
+	C:/msys64/home/TheSw1m/go/pkg/mod/github.com/ijnkawakaze/telegram-bot-api@v1.0.9/custom.go:222 +0x586
+main.main()
+	C:/Users/85327/source/repos/gorepo/do_not_xm/src/main.go:21 +0x185
+
+
+2025/04/20 00:47:17 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:47:17 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633341 timeout:60]
+
+2025/04/20 00:48:07 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:48:07 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633341 timeout:60]
+
+2025/04/20 00:48:58 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:48:58 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633341 timeout:60]
+
+2025/04/20 00:49:49 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 00:49:49 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 00:49:53 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633341,
+"message":{"message_id":1968,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-1001536556159,"title":"test for info","type":"supergroup"},"date":1745081396,"text":"1"}}]}
+
+2025/04/20 00:49:53 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633342 timeout:60]
+
+2025/04/20 00:49:56 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633342,
+"message":{"message_id":1969,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-1001536556159,"title":"test for info","type":"supergroup"},"date":1745081399,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:49:56 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633343 timeout:60]
+
+2025/04/20 00:50:41 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633343,
+"message":{"message_id":1970,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-1001536556159,"title":"test for info","type":"supergroup"},"date":1745081444,"new_chat_participant":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"new_chat_member":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"new_chat_members":[{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"}]}}]}
+
+2025/04/20 00:50:41 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633344 timeout:60]
+
+2025/04/20 00:50:43 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633344,
+"message":{"message_id":1972,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-1001536556159,"title":"test for info","type":"supergroup"},"date":1745081447,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:50:43 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633345 timeout:60]
+
+2025/04/20 00:51:34 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:51:34 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633345 timeout:60]
+
+2025/04/20 00:52:24 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:52:24 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633345 timeout:60]
+
+2025/04/20 00:53:04 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633345,
+"my_chat_member":{"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"date":1745081587,"old_chat_member":{"user":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"status":"left"},"new_chat_member":{"user":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"status":"member"}}}]}
+
+2025/04/20 00:53:04 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633346 timeout:60]
+
+2025/04/20 00:53:04 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633346,
+"message":{"message_id":400,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081587,"new_chat_participant":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"new_chat_member":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"new_chat_members":[{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"}]}}]}
+
+2025/04/20 00:53:04 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633347 timeout:60]
+
+2025/04/20 00:53:13 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633347,
+"message":{"message_id":401,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081597,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:53:13 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633348 timeout:60]
+
+2025/04/20 00:53:59 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633348,
+"message":{"message_id":402,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081643,"text":"1"}}]}
+
+2025/04/20 00:53:59 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633349 timeout:60]
+
+2025/04/20 00:54:01 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633349,
+"message":{"message_id":403,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081645,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:54:01 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633350 timeout:60]
+
+2025/04/20 00:54:31 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 00:54:31 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 00:54:33 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633350,
+"message":{"message_id":404,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081677,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:54:33 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633351 timeout:60]
+
+2025/04/20 00:54:33 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null text:不许羡慕！]
+
+2025/04/20 00:54:34 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":405,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081677,"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 00:55:24 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:55:24 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633351 timeout:60]
+
+2025/04/20 00:56:15 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:56:15 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633351 timeout:60]
+
+2025/04/20 00:56:57 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633351,
+"message":{"message_id":406,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081821,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:56:57 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633352 timeout:60]
+
+2025/04/20 00:57:01 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633352,
+"message":{"message_id":407,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081824,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:57:01 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633353 timeout:60]
+
+2025/04/20 00:57:03 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633353,
+"message":{"message_id":408,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081826,"text":"\u7fa1\u6155\u6b7b\u4e86"}}]}
+
+2025/04/20 00:57:03 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633354 timeout:60]
+
+2025/04/20 00:57:12 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633354,
+"message":{"message_id":409,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081835,"text":"\u554a\uff1f"}}]}
+
+2025/04/20 00:57:12 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633355 timeout:60]
+
+2025/04/20 00:57:12 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633355,
+"message":{"message_id":410,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081836,"text":"\u806a\u660e"}}]}
+
+2025/04/20 00:57:12 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633356 timeout:60]
+
+2025/04/20 00:57:14 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633356,
+"message":{"message_id":411,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081838,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:57:14 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633357 timeout:60]
+
+2025/04/20 00:57:15 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633357,
+"message":{"message_id":412,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081839,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:57:15 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633358 timeout:60]
+
+2025/04/20 00:57:16 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633358,
+"message":{"message_id":413,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081840,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:57:16 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633359 timeout:60]
+
+2025/04/20 00:57:17 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633359,
+"message":{"message_id":414,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081841,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 00:57:17 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633360 timeout:60]
+
+2025/04/20 00:57:22 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633360,
+"message":{"message_id":415,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081846,"text":"1"}}]}
+
+2025/04/20 00:57:22 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633361 timeout:60]
+
+2025/04/20 00:57:22 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633361,
+"message":{"message_id":416,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081846,"text":"1"}}]}
+
+2025/04/20 00:57:22 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633362 timeout:60]
+
+2025/04/20 00:57:23 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633362,
+"message":{"message_id":417,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081847,"text":"1"}}]}
+
+2025/04/20 00:57:23 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633363 timeout:60]
+
+2025/04/20 00:57:23 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633363,
+"message":{"message_id":418,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081847,"text":"1"}}]}
+
+2025/04/20 00:57:23 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633364 timeout:60]
+
+2025/04/20 00:57:24 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633364,
+"message":{"message_id":419,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081847,"text":"1"}}]}
+
+2025/04/20 00:57:24 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633365 timeout:60]
+
+2025/04/20 00:57:24 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633365,
+"message":{"message_id":420,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081848,"text":"1"}}]}
+
+2025/04/20 00:57:24 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633366 timeout:60]
+
+2025/04/20 00:57:25 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633366,
+"message":{"message_id":421,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081848,"text":"1"}}]}
+
+2025/04/20 00:57:25 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633367 timeout:60]
+
+2025/04/20 00:57:25 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633367,
+"message":{"message_id":422,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081849,"text":"1"}}]}
+
+2025/04/20 00:57:25 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633368 timeout:60]
+
+2025/04/20 00:57:26 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633368,
+"message":{"message_id":423,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081849,"text":"1"}}]}
+
+2025/04/20 00:57:26 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633369 timeout:60]
+
+2025/04/20 00:57:27 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633369,
+"message":{"message_id":424,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081850,"text":"2"}}]}
+
+2025/04/20 00:57:27 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633370 timeout:60]
+
+2025/04/20 00:57:27 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633370,
+"message":{"message_id":425,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081851,"text":"2"}}]}
+
+2025/04/20 00:57:27 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633371 timeout:60]
+
+2025/04/20 00:57:28 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633371,
+"message":{"message_id":426,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081852,"text":"1"}}]}
+
+2025/04/20 00:57:28 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633372 timeout:60]
+
+2025/04/20 00:57:28 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633372,
+"message":{"message_id":427,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081852,"text":"1"}}]}
+
+2025/04/20 00:57:28 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633373 timeout:60]
+
+2025/04/20 00:57:29 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633373,
+"message":{"message_id":428,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081853,"text":"1"}}]}
+
+2025/04/20 00:57:29 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633374 timeout:60]
+
+2025/04/20 00:57:29 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633374,
+"message":{"message_id":429,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081853,"text":"1"}}]}
+
+2025/04/20 00:57:29 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633375 timeout:60]
+
+2025/04/20 00:57:30 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633375,
+"message":{"message_id":430,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081854,"text":"1"}}]}
+
+2025/04/20 00:57:30 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633376 timeout:60]
+
+2025/04/20 00:57:38 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633376,
+"edited_message":{"message_id":415,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745081846,"edit_date":1745081862,"text":"2"}}]}
+
+2025/04/20 00:57:38 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 00:58:28 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:58:28 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 00:59:19 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 00:59:19 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 01:00:09 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:00:09 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 01:00:59 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:00:59 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 01:01:49 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:01:49 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 01:02:40 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:02:40 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633377 timeout:60]
+
+2025/04/20 01:14:22 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:14:22 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:14:30 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633377,
+"message":{"message_id":431,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082873,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:14:30 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633378 timeout:60]
+
+2025/04/20 01:14:30 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:431 text:不许羡慕！]
+
+2025/04/20 01:14:30 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":432,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082874,"reply_to_message":{"message_id":431,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082873,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:14:33 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633378,
+"message":{"message_id":433,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082876,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:14:33 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633379 timeout:60]
+
+2025/04/20 01:15:42 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:15:42 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:15:57 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633379,
+"message":{"message_id":434,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082960,"text":"\u6d4b\u8bd5"}}]}
+
+2025/04/20 01:15:57 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633380 timeout:60]
+
+2025/04/20 01:16:00 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633380,
+"message":{"message_id":435,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082963,"text":"\u6d4b\u8bd5"}}]}
+
+2025/04/20 01:16:00 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633381 timeout:60]
+
+2025/04/20 01:16:01 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633381,
+"message":{"message_id":436,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745082965,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:16:01 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633382 timeout:60]
+
+2025/04/20 01:16:51 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:16:51 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633382 timeout:60]
+
+2025/04/20 01:16:53 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633382,
+"message":{"message_id":437,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083016,"text":"xm"}}]}
+
+2025/04/20 01:16:53 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633383 timeout:60]
+
+2025/04/20 01:17:39 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:17:53 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633383,
+"message":{"message_id":438,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083077,"text":"xm"}}]}
+
+2025/04/20 01:17:53 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633384 timeout:60]
+
+2025/04/20 01:17:53 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:438 text:不许羡慕！]
+
+2025/04/20 01:17:54 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":439,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083077,"reply_to_message":{"message_id":438,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083077,"text":"xm"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:18:11 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633384,
+"message":{"message_id":440,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083094,"text":"\u7fa1\u6155\u6b7b\u4e86"}}]}
+
+2025/04/20 01:18:11 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633385 timeout:60]
+
+2025/04/20 01:18:31 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633385,
+"message":{"message_id":441,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083114,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:18:31 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633386 timeout:60]
+
+2025/04/20 01:18:40 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633386,
+"message":{"message_id":442,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083124,"text":"1"}}]}
+
+2025/04/20 01:18:40 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633387 timeout:60]
+
+2025/04/20 01:19:18 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:19:20 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633387,
+"message":{"message_id":443,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083163,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:19:20 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633388 timeout:60]
+
+2025/04/20 01:20:03 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:443 text:不许羡慕！]
+
+2025/04/20 01:20:03 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":444,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083207,"reply_to_message":{"message_id":443,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083163,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:20:12 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633388,
+"message":{"message_id":445,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083211,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:20:12 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633389 timeout:60]
+
+2025/04/20 01:20:29 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633389,
+"message":{"message_id":446,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083232,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:20:29 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633390 timeout:60]
+
+2025/04/20 01:21:29 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:21:29 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633390,
+"message":{"message_id":447,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083291,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:21:29 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633391 timeout:60]
+
+2025/04/20 01:21:36 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:447 text:不许羡慕！]
+
+2025/04/20 01:21:37 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":448,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083300,"reply_to_message":{"message_id":447,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083291,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:21:41 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633391,
+"message":{"message_id":449,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083305,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:21:41 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633392 timeout:60]
+
+2025/04/20 01:22:06 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633392,
+"message":{"message_id":450,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083328,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:22:06 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633393 timeout:60]
+
+2025/04/20 01:24:37 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:24:37 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:24:38 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633393,
+"message":{"message_id":451,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083481,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:24:38 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633394 timeout:60]
+
+2025/04/20 01:24:38 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:451 text:不许羡慕！]
+
+2025/04/20 01:24:38 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":452,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083482,"reply_to_message":{"message_id":451,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083481,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:24:39 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633394,
+"message":{"message_id":453,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083483,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:24:39 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633395 timeout:60]
+
+2025/04/20 01:24:39 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:453 text:不许羡慕！]
+
+2025/04/20 01:24:40 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":454,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083483,"reply_to_message":{"message_id":453,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083483,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:24:53 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:24:53 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:24:54 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633395,
+"message":{"message_id":455,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083498,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:24:54 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633396 timeout:60]
+
+2025/04/20 01:24:54 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:455 text:不许羡慕！]
+
+2025/04/20 01:24:55 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":456,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083498,"reply_to_message":{"message_id":455,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083498,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:24:55 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633396,
+"message":{"message_id":457,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083499,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:24:55 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633397 timeout:60]
+
+2025/04/20 01:24:55 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:457 text:不许羡慕！]
+
+2025/04/20 01:24:56 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":458,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083499,"reply_to_message":{"message_id":457,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083499,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:25:09 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:25:09 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:25:10 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633397,
+"message":{"message_id":459,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083514,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:25:10 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633398 timeout:60]
+
+2025/04/20 01:25:10 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:459 text:不许羡慕！]
+
+2025/04/20 01:25:11 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":460,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083514,"reply_to_message":{"message_id":459,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083514,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:25:50 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:26:03 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633398,
+"message":{"message_id":461,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083567,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:26:03 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633399 timeout:60]
+
+2025/04/20 01:28:21 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:28:21 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:28:22 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633398,
+"message":{"message_id":461,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083567,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:28:22 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633399 timeout:60]
+
+2025/04/20 01:28:22 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633399,
+"message":{"message_id":462,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083706,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:28:22 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633400 timeout:60]
+
+2025/04/20 01:29:13 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:29:13 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633400 timeout:60]
+
+2025/04/20 01:29:28 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633400,
+"message":{"message_id":463,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083772,"text":"1"}}]}
+
+2025/04/20 01:29:28 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633401 timeout:60]
+
+2025/04/20 01:29:33 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633401,
+"message":{"message_id":464,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083777,"text":"xm"}}]}
+
+2025/04/20 01:29:33 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633402 timeout:60]
+
+2025/04/20 01:29:59 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:30:26 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633402,
+"message":{"message_id":465,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083830,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:30:26 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633403 timeout:60]
+
+2025/04/20 01:31:58 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633403,
+"message":{"message_id":466,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083915,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:31:59 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633404 timeout:60]
+
+2025/04/20 01:32:10 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633404,
+"message":{"message_id":467,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083933,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:35:12 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:35:12 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:35:13 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633404,
+"message":{"message_id":467,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745083933,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:35:13 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633405 timeout:60]
+
+2025/04/20 01:35:13 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633405,
+"message":{"message_id":468,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084117,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:35:13 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633406 timeout:60]
+
+2025/04/20 01:35:20 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633406,
+"message":{"message_id":469,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084123,"text":"1"}}]}
+
+2025/04/20 01:35:20 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633407 timeout:60]
+
+2025/04/20 01:35:21 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633407,
+"message":{"message_id":470,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084125,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:35:21 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633408 timeout:60]
+
+2025/04/20 01:35:39 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:35:48 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633408,
+"message":{"message_id":471,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084152,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:35:48 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633409 timeout:60]
+
+2025/04/20 01:36:17 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633409,
+"message":{"message_id":472,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084180,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:36:27 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633410 timeout:60]
+
+2025/04/20 01:39:26 bot.go:98: [INFO] Using proxy: http://127.0.0.1:7890
+2025/04/20 01:39:26 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null timeout:60]
+
+2025/04/20 01:39:27 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633409,
+"message":{"message_id":472,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084180,"text":"\u7fa1\u6155"}},{"update_id":465633410,
+"message":{"message_id":473,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084185,"text":"1"}},{"update_id":465633411,
+"message":{"message_id":474,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084188,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:39:27 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633412 timeout:60]
+
+2025/04/20 01:39:31 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633412,
+"message":{"message_id":475,"from":{"id":5568996608,"is_bot":false,"first_name":"\u841d\u8389\u8d5b\u9ad8 | Roam","username":"TheSw1m","language_code":"zh-hans","is_premium":true},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084375,"text":"1\u3011"}}]}
+
+2025/04/20 01:39:31 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633413 timeout:60]
+
+2025/04/20 01:39:33 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[{"update_id":465633413,
+"message":{"message_id":476,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084376,"text":"\u7fa1\u6155"}}]}
+
+2025/04/20 01:39:33 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633414 timeout:60]
+
+2025/04/20 01:39:33 bot.go:96: [INFO] Endpoint: sendMessage, params: map[chat_id:-4593962739 entities:null reply_to_message_id:476 text:不许羡慕！]
+
+2025/04/20 01:39:33 bot.go:122: [INFO] Endpoint: sendMessage, response: {"ok":true,"result":{"message_id":477,"from":{"id":7321634203,"is_bot":true,"first_name":"testbot","username":"theswimtestbot"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084377,"reply_to_message":{"message_id":476,"from":{"id":7912107913,"is_bot":false,"first_name":"rdd","username":"rainyun_server"},"chat":{"id":-4593962739,"title":"qwq","type":"group","all_members_are_administrators":true,"accepted_gift_types":{"unlimited_gifts":false,"limited_gifts":false,"unique_gifts":false,"premium_subscription":false}},"date":1745084376,"text":"\u7fa1\u6155"},"text":"\u4e0d\u8bb8\u7fa1\u6155\uff01"}}
+
+2025/04/20 01:40:23 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:40:23 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633414 timeout:60]
+
+2025/04/20 01:41:13 bot.go:122: [INFO] Endpoint: getUpdates, response: {"ok":true,"result":[]}
+
+2025/04/20 01:41:13 bot.go:96: [INFO] Endpoint: getUpdates, params: map[allowed_updates:null offset:465633414 timeout:60]
+
