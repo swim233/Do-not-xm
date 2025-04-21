@@ -3,6 +3,7 @@ package handler
 import (
 	"regexp"
 	"strings"
+	"time"
 
 	"slices"
 
@@ -13,26 +14,34 @@ import (
 type XmHandler struct {
 	WaitingForMessageID int //监听用户消息id
 	WaitingForGroupID   int //监听群组id
-	HandlerConfig
+	UpdateChannels      chan tgbotapi.Update
+	HandlerConfig       //消息处理配置
+	Timer               //计时器
 }
 type HandlerConfig struct {
 	EnableChecker    bool    //是否开启羡慕检查
 	RandomCoolDown   int     //随机冷却时间
 	StaticCoolDown   int     //固定冷却时间
+	CoolDownTime     int     //当前冷却时间
 	TriggerMode      string  //触发模式
 	WaitingForUserID int64   //监听用户id
 	PermissionUserID []int64 //权限用户id
 }
 
+type Timer struct {
+}
+
 var re = regexp.MustCompile(".*羡.*慕.*")
 
 // 构造函数
-func NewXmHandler(waitingForUserID int64, u tgbotapi.Update) *XmHandler {
+func NewXmHandler(waitingForGroupID int64, u tgbotapi.Update) *XmHandler {
 
 	newHandler := &XmHandler{
+		WaitingForMessageID: 0,
+		WaitingForGroupID:   int(waitingForGroupID),
 		HandlerConfig: HandlerConfig{
 			WaitingForUserID: utils.BotConfig.WaitingForUserID,
-			PermissionUserID: []int64{waitingForUserID},
+			PermissionUserID: []int64{utils.BotConfig.WaitingForUserID},
 			EnableChecker:    utils.BotConfig.EnableChecker,
 			TriggerMode:      utils.BotConfig.TriggerMode,
 		},
@@ -47,7 +56,6 @@ func (x *XmHandler) IsXm(u tgbotapi.Update) bool {
 	next := func(u tgbotapi.Update) bool {
 		return u.Message.MessageID == x.WaitingForMessageID+1
 	}(u)
-
 	if x.TriggerMode == "match" {
 		return match && next
 	} else {
@@ -104,4 +112,14 @@ func (x *XmHandler) CheckPermission(userID int64, u tgbotapi.Update) bool {
 		return true
 	}
 	return false
+}
+
+// 计时器
+func (t *Timer) timer(handler *XmHandler) {
+	for {
+		time.Sleep(time.Second)
+		if handler.CoolDownTime > 0 {
+			handler.CoolDownTime--
+		}
+	}
 }

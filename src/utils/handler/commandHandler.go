@@ -27,10 +27,10 @@ func changeCoolDown(u tgbotapi.Update) (coolDownType string, time string, err er
 		_, err := utils.Bot.Request(msg)
 		return "", "", err
 	}
-	if Args[1] == "static" {
-		return Args[1], Args[2], nil
-	} else if Args[2] == "random" {
-		return Args[1], Args[2], nil
+	if Args[0] == "static" {
+		return Args[0], Args[1], nil
+	} else if Args[0] == "random" {
+		return Args[0], Args[1], nil
 	} else {
 		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "时间选项有误，请重新输入")
 		utils.Bot.Send(msg)

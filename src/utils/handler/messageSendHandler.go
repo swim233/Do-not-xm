@@ -2,9 +2,10 @@ package handler
 
 import (
 	"fmt"
+	"math/rand"
 	"regexp"
 	"strconv"
-	"time"
+	"strings"
 
 	tgbotapi "github.com/ijnkawakaze/telegram-bot-api"
 	"github.com/swim233/do_not_xm/utils"
@@ -13,8 +14,6 @@ import (
 type MessageProcessor struct {
 	Handler map[int64]*XmHandler
 }
-
-var msgChan = make(chan tgbotapi.Update, 100)
 
 // 初始化map
 func NewMessageProcessor() *MessageProcessor {
@@ -25,122 +24,149 @@ func NewMessageProcessor() *MessageProcessor {
 
 // 处理消息
 func (m *MessageProcessor) Processor(u tgbotapi.Update) error {
-
-	groupID := u.Message.Chat.ID
-
-	xmHandler, ok := m.Handler[groupID]
-	if !ok {
-
-		xmHandler = NewXmHandler(u.Message.From.ID, u)
-		m.Handler[groupID] = xmHandler
-		m.SendMessage(u, *xmHandler)
-		msgChan <- u
-		go xmHandler.ListenMessage(msgChan)
-		return nil
-	} else {
-		msgChan <- u
-		m.SendMessage(u, *xmHandler)
-		return nil
-	}
-}
-
-// 发送do_not_xm消息
-func (m MessageProcessor) SendMessage(u tgbotapi.Update, handler XmHandler) {
-	if handler.IsXm(u) {
-		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "不许羡慕！")
-		msg.ReplyToMessageID = u.Message.MessageID
-		utils.Bot.Send(msg)
-	}
-
-}
-
-// 更改cd
-func (m MessageProcessor) ChangeCoolDown(u tgbotapi.Update) error {
-	groupID := u.Message.Chat.ID
-
-	xmHandler, ok := m.Handler[groupID]
-	if !ok {
-
-		xmHandler = NewXmHandler(u.Message.From.ID, u)
-		m.Handler[groupID] = xmHandler
-		if xmHandler.CheckPermission(u.Message.From.ID, u) {
-			cdt, t, err := changeCoolDown(u)
-			if err != nil {
-				return err
-			}
-			intT, err := m.parseToSeconds(t)
-			if err != nil {
-				utils.Bot.Send(func(u tgbotapi.Update) tgbotapi.Chattable {
-					return tgbotapi.NewMessage(u.Message.From.ID, "错误的时间格式")
-				}(u))
-				return err
-			}
-			if cdt == "static" {
-				xmHandler.StaticCoolDown = int(intT)
-			} else if cdt == "random" {
-				xmHandler.RandomCoolDown = int(intT)
-			}
-
-		}
-		return nil
-	} else {
-		if xmHandler.CheckPermission(u.Message.From.ID, u) {
-			cdt, t, err := changeCoolDown(u)
-			if err != nil {
-				return err
-			}
-			intT, err := m.parseToSeconds(t)
-			if err != nil {
-				utils.Bot.Send(func(u tgbotapi.Update) tgbotapi.Chattable {
-					return tgbotapi.NewMessage(u.Message.From.ID, "错误的时间格式")
-				}(u))
-				return err
-			}
-			if cdt == "static" {
-				xmHandler.StaticCoolDown = int(intT)
-			} else if cdt == "random" {
-				xmHandler.RandomCoolDown = int(intT)
-			}
-		}
+	xmHandler, exists := m.getXmHandler(u)
+	m.SendMessage(u, *xmHandler)
+	xmHandler.UpdateChannels <- u
+	if !exists {
+		go xmHandler.ListenMessage(xmHandler.UpdateChannels)
+		go xmHandler.timer(xmHandler)
 	}
 	return nil
 }
-func (m MessageProcessor) Test(u tgbotapi.Update) error {
 
-	groupID := u.Message.Chat.ID
-	xmHandler, ok := m.Handler[groupID]
-	if !ok {
-		xmHandler = NewXmHandler(u.Message.From.ID, u)
-		m.Handler[groupID] = xmHandler
-		msg := tgbotapi.NewMessage(groupID, fmt.Sprintf("当前cd %d", xmHandler.StaticCoolDown))
+// 发送do_not_xm消息
+func (m *MessageProcessor) SendMessage(u tgbotapi.Update, handler XmHandler) {
+	if handler.IsXm(u) && handler.CoolDownTime == 0 {
+		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "不许羡慕！")
+		msg.ReplyToMessageID = u.Message.MessageID
+		utils.Bot.Send(msg)
+		handler.CoolDownTime = handler.StaticCoolDown + func(handler XmHandler) int {
+			if handler.RandomCoolDown > 0 {
+				return rand.Intn(handler.RandomCoolDown + 1)
+			}
+			return 0
+		}(handler)
+	}
+}
+
+// 更改cd
+func (m *MessageProcessor) ChangeCoolDown(u tgbotapi.Update) error {
+	xmHandler, _ := m.getXmHandler(u)
+	if !xmHandler.CheckPermission(u.Message.From.ID, u) { //检查权限
+		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "你没有执行此操作的权限！")
 		utils.Bot.Send(msg)
 		return nil
 	} else {
-		msg := tgbotapi.NewMessage(groupID, fmt.Sprintf("当前cd %d", xmHandler.StaticCoolDown))
-		utils.Bot.Send(msg)
+		coolDownType, time, err := changeCoolDown(u) //获取冷却时间和类型
+		if err != nil || time == "" {
+			return err
+		}
+
+		intT, err := m.parseToSeconds(time) //格式化时间
+		if err != nil {
+			utils.Bot.Send(func(u tgbotapi.Update) tgbotapi.Chattable {
+				return tgbotapi.NewMessage(u.Message.Chat.ID, "错误的时间格式")
+			}(u))
+			return err
+		}
+		if coolDownType == "static" {
+			xmHandler.StaticCoolDown = int(intT)
+		} else if coolDownType == "random" {
+			xmHandler.RandomCoolDown = int(intT)
+		}
+		msgStr := fmt.Sprintf("当前CD为 %s 固定CD %s 随机CD", formatSeconds(xmHandler.StaticCoolDown), formatSeconds(xmHandler.RandomCoolDown))
+		utils.Bot.Send(func(u tgbotapi.Update) tgbotapi.Chattable {
+			return tgbotapi.NewMessage(u.Message.Chat.ID, msgStr)
+		}(u))
+
+		xmHandler.CoolDownTime = xmHandler.StaticCoolDown + func(handler *XmHandler) int {
+			if handler.RandomCoolDown > 0 {
+				return rand.Intn(handler.RandomCoolDown + 1)
+			}
+			return 0
+		}(xmHandler)
+
 	}
+	return nil
+}
+
+// 输出剩余cd
+func (m *MessageProcessor) CD(u tgbotapi.Update) error {
+	xmHandler, _ := m.getXmHandler(u)
+	msg := tgbotapi.NewMessage(u.Message.Chat.ID, fmt.Sprintf("当前剩余CD %s",
+		formatSeconds(xmHandler.RandomCoolDown+xmHandler.StaticCoolDown)))
+	utils.Bot.Send(msg)
 	return nil
 }
 
 // 时间解析
-func (m MessageProcessor) parseToSeconds(t string) (int64, error) {
-
-	re := regexp.MustCompile(`(\d+)d`)
-	matches := re.FindAllStringSubmatch(t, -1)
-	totalHours := 0
-	for _, match := range matches {
-		days, _ := strconv.Atoi(match[1])
-		totalHours += days * 24
+func (m *MessageProcessor) parseToSeconds(t string) (int64, error) {
+	re := regexp.MustCompile(`(\d+)(d|h|m|s)`)
+	matches := re.FindAllString(t, -1)
+	if len(matches) == 0 {
+		return 0, fmt.Errorf("invalid time format: %q", t)
 	}
 
-	t = re.ReplaceAllString(t, "")
+	// 验证输入是否完全由合法部分组成
+	if strings.Join(matches, "") != t {
+		return 0, fmt.Errorf("invalid time format: %q", t)
+	}
 
-	if totalHours > 0 {
-		t = strconv.Itoa(totalHours) + "h" + t
+	var totalSeconds int64
+	for _, part := range matches {
+		// 分离数值和单位
+		var valueStr, unit string
+		for i, c := range part {
+			if c < '0' || c > '9' {
+				valueStr = part[:i]
+				unit = part[i:]
+				break
+			}
+		}
+
+		value, err := strconv.ParseInt(valueStr, 10, 64)
+		if err != nil {
+			return 0, fmt.Errorf("invalid value in %q: %v", part, err)
+		}
+
+		switch unit {
+		case "d":
+			totalSeconds += value * 86400 // 24*60*60
+		case "h":
+			totalSeconds += value * 3600 // 60*60
+		case "m":
+			totalSeconds += value * 60
+		case "s":
+			totalSeconds += value
+		default:
+			return 0, fmt.Errorf("unknown unit %q in %q", unit, part)
+		}
 	}
-	duration, err := time.ParseDuration(t)
-	if err != nil {
-		return 0, err
+	return totalSeconds, nil
+}
+
+// 实例化xmHandler
+func (m *MessageProcessor) getXmHandler(u tgbotapi.Update) (handler *XmHandler, exists bool) {
+
+	groupID := u.Message.Chat.ID
+	xmHandler, ok := m.Handler[groupID]
+	if !ok {
+		xmHandler = NewXmHandler(u.Message.Chat.ID, u)
+		m.Handler[groupID] = xmHandler
+		return xmHandler, false
+	} else {
+		return xmHandler, true
 	}
-	return int64(duration.Seconds()), nil
+}
+
+// 格式化时间
+func formatSeconds(seconds int) string {
+	days := seconds / (24 * 3600)
+	seconds %= 24 * 3600
+	hours := seconds / 3600
+	seconds %= 3600
+	minutes := seconds / 60
+	seconds %= 60
+
+	return fmt.Sprintf("%d天%d小时%d分钟%d秒", days, hours, minutes, seconds)
 }

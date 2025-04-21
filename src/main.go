@@ -11,9 +11,9 @@ func main() {
 	b := utils.Bot.AddHandle()
 	processor := handler.NewMessageProcessor()
 	b.NewCommandProcessor("changecd", processor.ChangeCoolDown)
-	b.NewCommandProcessor("test", processor.Test)
+	b.NewCommandProcessor("cd", processor.CD)
 	b.NewProcessor(func(u tgbotapi.Update) bool {
-		return u.Message != nil
+		return u.Message != nil && !u.Message.IsCommand()
 	}, processor.Processor)
 	b.Run()
 }
