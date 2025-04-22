@@ -53,9 +53,9 @@ func NewXmHandler(waitingForGroupID int64, u tgbotapi.Update) *XmHandler {
 // 检查是否符合回复条件
 func (x *XmHandler) IsXm(u tgbotapi.Update) bool {
 
-	match := re.MatchString(u.Message.Text) || strings.Contains(u.Message.Text, "xm")
+	match := (re.MatchString(u.Message.Text) || strings.Contains(u.Message.Text, "xm")) && u.Message.From.ID != x.WaitingForUserID
 	next := func(u tgbotapi.Update) bool {
-		return u.Message.MessageID == x.WaitingForMessageID+1
+		return (u.Message.MessageID == x.WaitingForMessageID+1) && u.Message.From.ID != x.WaitingForUserID
 	}(u)
 	if x.TriggerMode == "match" {
 		return match && next

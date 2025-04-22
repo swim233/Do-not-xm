@@ -25,12 +25,12 @@ func NewMessageProcessor() *MessageProcessor {
 // 处理消息
 func (m *MessageProcessor) Processor(u tgbotapi.Update) error {
 	xmHandler, exists := m.getXmHandler(u)
-	m.SendMessage(u, xmHandler)
-	xmHandler.UpdateChannels <- u
 	if !exists {
 		go xmHandler.ListenMessage(xmHandler.UpdateChannels)
 		go xmHandler.timer(xmHandler)
 	}
+	m.SendMessage(u, xmHandler)
+	xmHandler.UpdateChannels <- u
 	return nil
 }
 
@@ -156,7 +156,6 @@ func (m *MessageProcessor) parseToSeconds(t string) (int64, error) {
 
 // 实例化xmHandler
 func (m *MessageProcessor) getXmHandler(u tgbotapi.Update) (handler *XmHandler, exists bool) {
-
 	groupID := u.Message.Chat.ID
 	xmHandler, ok := m.Handler[groupID]
 	if !ok {
