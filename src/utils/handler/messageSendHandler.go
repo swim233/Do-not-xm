@@ -97,6 +97,17 @@ func (m *MessageProcessor) CD(u tgbotapi.Update) error {
 	return nil
 }
 
+// 修改匹配模式
+func (m *MessageProcessor) SwitchTrigger(u tgbotapi.Update) error {
+	XmHandler, _ := m.getXmHandler(u)
+	triggerMode, err := switchTrigger(u)
+	if err != nil {
+		return err
+	}
+	XmHandler.TriggerMode = triggerMode
+	return nil
+}
+
 // 时间解析
 func (m *MessageProcessor) parseToSeconds(t string) (int64, error) {
 	re := regexp.MustCompile(`(\d+)(d|h|m|s)`)

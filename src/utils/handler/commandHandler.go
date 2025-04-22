@@ -21,19 +21,38 @@ func getPermissionArg(u tgbotapi.Update) (arg int64, success bool) {
 
 // 更改cd
 func changeCoolDown(u tgbotapi.Update) (coolDownType string, time string, err error) {
-	Args := strings.Split(u.Message.CommandArguments(), " ")
-	if len(Args) != 2 {
+	args := strings.Split(u.Message.CommandArguments(), " ")
+	if len(args) != 2 {
 		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "参数数量有误，请重新输入")
 		_, err := utils.Bot.Request(msg)
 		return "", "", err
 	}
-	if Args[0] == "static" {
-		return Args[0], Args[1], nil
-	} else if Args[0] == "random" {
-		return Args[0], Args[1], nil
+	if args[0] == "static" {
+		return args[0], args[1], nil
+	} else if args[0] == "random" {
+		return args[0], args[1], nil
 	} else {
 		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "时间选项有误，请重新输入")
 		utils.Bot.Send(msg)
 		return "", "", errors.New("错误的时间选项")
 	}
+}
+
+func switchTrigger(u tgbotapi.Update) (triggerMode string, err error) {
+	args := strings.Split(u.Message.CommandArguments(), " ")
+	if len(args) != 1 {
+		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "参数数量有误，请重新输入")
+		_, err := utils.Bot.Request(msg)
+		return "", err
+	}
+	if args[0] == "any" {
+		return args[0], nil
+	} else if args[0] == "match" {
+		return args[0], nil
+	} else {
+		msg := tgbotapi.NewMessage(u.Message.Chat.ID, "模式选项有误，请重新输入")
+		utils.Bot.Send(msg)
+		return "", errors.New("错误的模式选项")
+	}
+
 }

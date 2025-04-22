@@ -12,6 +12,7 @@ func main() {
 	processor := handler.NewMessageProcessor()
 	b.NewCommandProcessor("changecd", processor.ChangeCoolDown)
 	b.NewCommandProcessor("cd", processor.CD)
+	b.NewCommandProcessor("switchmode", processor.SwitchTrigger)
 	b.NewProcessor(func(u tgbotapi.Update) bool {
 		return u.Message != nil && !u.Message.IsCommand()
 	}, processor.Processor)

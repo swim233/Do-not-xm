@@ -39,6 +39,7 @@ func NewXmHandler(waitingForGroupID int64, u tgbotapi.Update) *XmHandler {
 	newHandler := &XmHandler{
 		WaitingForMessageID: 0,
 		WaitingForGroupID:   waitingForGroupID,
+		UpdateChannels:      make(chan tgbotapi.Update, 100),
 		HandlerConfig: HandlerConfig{
 			WaitingForUserID: utils.BotConfig.WaitingForUserID,
 			PermissionUserID: []int64{utils.BotConfig.WaitingForUserID},
