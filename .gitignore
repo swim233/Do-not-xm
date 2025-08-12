@@ -1,5 +1,6 @@
 .env
-*learn*
-/logs
-main
-*release*
+*.log
+*.db
+*.zip
+*.json
+*.zip

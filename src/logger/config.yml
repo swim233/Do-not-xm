@@ -1,0 +1,16 @@
+# Zap日志配置
+zap:
+  prefix: ZapLogTest
+  timeFormat: 2006/01/02 - 15:04:05.00000
+  level: debug
+  caller: true
+  stackTrace: false
+  encode: console
+  # 日志输出到哪里 file | console | both
+  writer: both
+  logFile:
+    maxSize: 20
+    backups: 5
+    compress: true
+    output:
+      - "./log/output.log"
